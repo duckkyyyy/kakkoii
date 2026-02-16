@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-black: #1C1B1B;
+  --color-white: #F8F8F8;
+  --color-gray: #E9E9E9;
+  
+  --font-primary: 'Gilroy', system-ui, sans-serif;
+  
+  --text-desktop-h1: 60px;
+  --text-desktop-h2: 48px;
+  --text-desktop-h3: 40px;
+  --text-desktop-h4: 32px;
+  
+  --text-mobile-h1: 32px;
+  --text-mobile-h2: 26px;
+  --text-mobile-h3: 22px;
+  --text-mobile-h4: 18px;
+  
+  --text-32: 32px;
+  --text-28: 28px;
+  --text-24: 24px;
+  --text-20: 20px;
+  --text-16: 16px;
+  
+  --line-height: 1.2;
+
+  --grid-columns: 12;
+  --grid-gap: 20px;       
+  --container-padding: 40px; 
+  --container-max-width: 1920px;
+  
+  --space-unit: 8px;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-primary);
+    color: var(--color-black);
+    background-color: var(--color-white);
+    line-height: var(--line-height);
+  }
+  
+  h1 {
+    font-size: var(--text-desktop-h1);
+    font-weight: 700;
+  }
+  
+  h2 {
+    font-size: var(--text-desktop-h2);
+    font-weight: 600;
+  }
+  
+  h3 {
+    font-size: var(--text-desktop-h3);
+    font-weight: 700;
+  }
+  
+  h4 {
+    font-size: var(--text-desktop-h4);
+    font-weight: 700;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: var(--text-mobile-h1);
+    }
+    
+    h2 {
+      font-size: var(--text-mobile-h2);
+    }
+    
+    h3 {
+      font-size: var(--text-mobile-h3);
+    }
+    
+    h4 {
+      font-size: var(--text-mobile-h4);
+    }
+  }
+}
