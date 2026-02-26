@@ -1,6 +1,6 @@
 import './globals.css'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from './components/organisms/Header'
+import Footer from './components/organisms/Footer'
 
 export const metadata = {
   title: 'Мой проект',
@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="ru">
       <body>
         <Header />
-        <main className="pt-[165]">
+        <main className="main-with-header">
           {children}
         </main>
         <Footer />

@@ -1,0 +1,9 @@
+export { default as ArrowUp } from './arrowup';
+export { default as Checkmark } from './checkmark';
+export { default as Clip } from './clip';
+export { default as Cross } from './cross';
+export { default as Pause } from './pause';
+export { default as Play1 } from './play1';
+export { default as Play2 } from './play2';
+export { default as Question } from './question';
+export { default as Search } from './search';
