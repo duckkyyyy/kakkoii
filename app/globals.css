@@ -724,3 +724,798 @@ h4 {
 .article-card:hover .article-card__description {
   color: var(--color-white);
 }
+
+/* ArticleCover — обложка статьи на всю ширину экрана с учётом отступов 40px */
+.article-cover {
+  width: calc(100vw - 80px);
+  max-width: calc(100% - 80px);
+  margin-left: 40px;
+  margin-right: 40px;
+  position: relative;
+}
+
+.article-cover__image-wrap {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background-color: var(--color-gray);
+  border: 4px solid var(--color-black);
+  box-sizing: border-box;
+}
+
+.article-cover__image-inner {
+  position: absolute;
+  inset: 0;
+}
+
+.article-cover__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Кнопка «Назад» — белый блок с чёрной стрелкой влево, обводка слева и сверху накладывается на обводку обложки */
+.article-cover__back {
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  z-index: 2;
+}
+
+.article-cover__back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  background-color: var(--color-white);
+  border: 4px solid var(--color-black);
+  cursor: pointer;
+  transition: opacity 0.2s;
+  text-decoration: none;
+  color: var(--color-black);
+}
+
+.article-cover__back-btn:hover {
+  opacity: 0.8;
+}
+
+.article-cover__back-icon {
+  transform: rotate(-90deg);
+}
+
+/* Блок заголовка — чёрный прямоугольник внизу слева, вплотную к левому краю */
+.article-cover__title-block {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 980px;
+  min-height: 176px;
+  padding: 40px;
+  background-color: var(--color-black);
+  border: 4px solid var(--color-black);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.article-cover__title {
+  font-family: var(--font-primary);
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--color-white);
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .article-cover {
+    width: calc(100vw - 40px);
+    max-width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+/* ArticleBlock — блоки контента статьи (grammar, vocab, reading, introduction) */
+.article-block {
+  background-color: var(--color-white);
+  border: 4px solid var(--color-black);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+}
+
+.article-block__title {
+  flex-shrink: 0;
+}
+
+.article-block__text {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.article-block__construction {
+  background-color: var(--color-gray);
+  padding: 20px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .article-cover__image-wrap {
+    height: 400px;
+  }
+
+  .article-cover__title-block {
+    left: 0;
+    min-height: auto;
+    padding: 24px 20px;
+    max-width: calc(100% - 40px);
+  }
+
+  .article-cover__title {
+    font-size: 26px;
+  }
+
+  .article-cover__back-btn {
+    width: 52px;
+    height: 52px;
+    padding: 8px;
+  }
+}
+
+/* ArticleWithSidebar — сетка: контент 9 колонок, сайдбар 3 колонки */
+.article-with-sidebar {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+.article-with-sidebar__content {
+  min-width: 0;
+}
+
+.article-with-sidebar__sidebar {
+  min-width: 0;
+}
+
+@media (max-width: 1024px) {
+  .article-with-sidebar__content,
+  .article-with-sidebar__sidebar {
+    grid-column: span 12;
+  }
+  .article-with-sidebar__sidebar {
+    order: -1;
+  }
+}
+
+/* ArticleSidebar — сайдбар статьи, прилипает справа, ширина 3 колонки */
+.article-sidebar {
+  position: sticky;
+  top: 165px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+.article-sidebar__toc {
+  background-color: var(--color-white);
+  border: 4px solid var(--color-black);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.article-sidebar__toc-link {
+  color: var(--color-black);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.article-sidebar__toc-link:hover {
+  opacity: 0.7;
+}
+
+.article-sidebar__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.article-sidebar__link-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 28px;
+  background-color: var(--color-white);
+  border: 4px solid var(--color-black);
+  text-decoration: none;
+  color: var(--color-black);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.article-sidebar__link-item:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.article-sidebar__link-item:hover .typo {
+  color: var(--color-white);
+}
+
+.article-sidebar__link-item--placeholder {
+  cursor: default;
+}
+
+.article-sidebar__link-item--placeholder:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.article-sidebar__link-icon {
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .article-sidebar {
+    position: static;
+    align-self: stretch;
+  }
+}
+
+/* VocabCard — карточка словарного слова с play/pause */
+.vocab-card {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 210px;
+  padding: 40px;
+  background-color: var(--color-white);
+  border: 4px solid var(--color-black);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.vocab-card--playing {
+  background-color: var(--color-black);
+}
+
+.vocab-card--playing .vocab-card__reading,
+.vocab-card--playing .vocab-card__kanji,
+.vocab-card--playing .vocab-card__translation,
+.vocab-card--playing .typo {
+  color: var(--color-white);
+}
+
+.vocab-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.vocab-card__japanese {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+}
+
+.vocab-card__play-btn {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  border: 4px solid var(--color-black);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.vocab-card--playing .vocab-card__play-btn {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+.vocab-card__play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vocab-card__play-btn:hover {
+  opacity: 0.85;
+}
+
+/* KanjiCard — карточка кандзи, при hover инвертируются цвета */
+.kanji-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+  background-color: var(--color-white);
+  border: 4px solid var(--color-black);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.kanji-card:hover {
+  background-color: var(--color-black);
+}
+
+.kanji-card:hover .kanji-card__kanji,
+.kanji-card:hover .kanji-card__meaning,
+.kanji-card:hover .kanji-card__reading,
+.kanji-card:hover .typo {
+  color: var(--color-white);
+}
+
+.kanji-card:hover .kanji-card__button {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 4px solid var(--color-black);
+}
+
+.kanji-card__kanji {
+  font-family: var(--font-primary), 'Noto Sans JP', sans-serif;
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--color-black);
+  transition: color 0.2s;
+}
+
+.kanji-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.kanji-card__meaning {
+  color: var(--color-black);
+  text-align: center;
+  width: 100%;
+  transition: color 0.2s;
+}
+
+.kanji-card__reading {
+  color: var(--color-black);
+  opacity: 0.6;
+  text-align: center;
+  width: 100%;
+  transition: color 0.2s;
+}
+
+.kanji-card__button {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  border: 4px solid var(--color-black);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* TestChoiceInput — инпут выбора ответа в тестах */
+.test-choice-input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 64px;
+  padding: 20px;
+  border: 4px solid var(--color-black);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-primary);
+  font-size: var(--text-24);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.test-choice-input--default {
+  justify-content: center;
+}
+
+.test-choice-input--default:not(.test-choice-input--disabled):hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.test-choice-input--selected,
+.test-choice-input--selected-correct,
+.test-choice-input--selected-wrong {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  justify-content: space-between;
+}
+
+.test-choice-input--unselected-correct {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  justify-content: space-between;
+}
+
+.test-choice-input__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.test-choice-input--default .test-choice-input__text,
+.test-choice-input--selected .test-choice-input__text {
+  flex: 1 0 0;
+}
+
+.test-choice-input--selected-correct .test-choice-input__text,
+.test-choice-input--selected-wrong .test-choice-input__text,
+.test-choice-input--unselected-correct .test-choice-input__text {
+  flex-shrink: 0;
+}
+
+.test-choice-input__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-choice-input--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.test-choice-input--unselected-correct.test-choice-input--disabled {
+  opacity: 1;
+}
+
+/* GrammarTag — грамматический тег для выбора в тестах */
+.grammar-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 24px;
+  border: 2px solid var(--color-black);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-primary);
+  font-size: var(--text-20);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.grammar-tag--default {
+  justify-content: center;
+}
+
+.grammar-tag--default:not(.grammar-tag--disabled):hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.grammar-tag--selected {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  justify-content: center;
+}
+
+.grammar-tag--selected-correct,
+.grammar-tag--selected-wrong {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.grammar-tag--selected-correct {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.grammar-tag--selected-wrong {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.grammar-tag--unselected-correct {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  justify-content: center;
+  gap: 8px;
+}
+
+.grammar-tag__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grammar-tag__text {
+  flex-shrink: 0;
+}
+
+.grammar-tag--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.grammar-tag--unselected-correct.grammar-tag--disabled {
+  opacity: 1;
+}
+
+/* GrammarTest — тест по грамматике: расставить слова в правильном порядке */
+.grammar-test {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.grammar-test__field {
+  min-height: 250px;
+  background-color: var(--color-white);
+  border: 4px solid var(--color-black);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grammar-test__slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.grammar-test__slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 24px;
+  background-color: var(--color-gray);
+  transition: background-color 0.2s;
+}
+
+.grammar-test__slot:not(.grammar-test__slot--empty) {
+  background-color: transparent;
+}
+
+.grammar-test__slot--empty {
+  min-width: 80px;
+}
+
+.grammar-test__slot--drag-over {
+  background-color: #d0d0d0;
+}
+
+.grammar-test__slot-placeholder {
+  display: block;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.grammar-test__slot-tag {
+  cursor: grab;
+}
+
+.grammar-test__slot-tag:active {
+  cursor: grabbing;
+}
+
+.grammar-test__grammar-tag-in-slot {
+  pointer-events: none;
+  opacity: 1;
+}
+
+.grammar-test__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.grammar-test__tag-wrapper {
+  cursor: grab;
+}
+
+.grammar-test__tag-wrapper:active {
+  cursor: grabbing;
+}
+
+.grammar-test__tag-wrapper--used {
+  opacity: 0.2;
+  cursor: default;
+  pointer-events: none;
+}
+
+.grammar-test__tag-wrapper--used:active {
+  cursor: default;
+}
+
+.grammar-test__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.grammar-test__btn {
+  flex: 1;
+  min-width: 200px;
+}
+
+.grammar-test__btn--secondary {
+  flex: 1;
+}
+
+/* KanjiStrokeField — поле для отработки порядка черт кандзи */
+.kanji-stroke-field {
+  width: 100%;
+}
+
+.kanji-stroke-field__inner {
+  position: relative;
+  width: 100%;
+  min-height: 312px;
+  background-color: var(--color-white);
+  border: 4px solid var(--color-black);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kanji-stroke-field__counter {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  font-size: var(--text-20);
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.kanji-stroke-field__clear {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  padding: 8px 16px;
+  font-family: var(--font-primary);
+  font-size: var(--text-16);
+  font-weight: 500;
+  background: none;
+  border: 2px solid var(--color-black);
+  color: var(--color-black);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.kanji-stroke-field__clear:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.kanji-stroke-field__hint {
+  position: absolute;
+  inset: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary), 'Noto Sans JP', sans-serif;
+  font-size: min(20vw, 200px);
+  font-weight: 400;
+  color: var(--color-gray);
+  opacity: 0.6;
+  pointer-events: none;
+  user-select: none;
+}
+
+.kanji-stroke-field__canvas {
+  position: absolute;
+  inset: 20px;
+  z-index: 1;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.kanji-stroke-field__result {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-size: var(--text-20);
+  font-weight: 600;
+}
+
+.kanji-stroke-field__result--correct {
+  color: #16a34a;
+}
+
+.kanji-stroke-field__result--wrong {
+  color: #dc2626;
+}
+
+/* TestQuestion — карточка вопроса теста (номер + заголовок) */
+.test-question {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+  padding: 40px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: 4px solid var(--color-black);
+  box-sizing: border-box;
+}
+
+.test-question__counter {
+  font-size: var(--text-24);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-white);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.test-question__title {
+  font-size: var(--text-32);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-white);
+  margin: 0;
+  flex-shrink: 0;
+  font-family: var(--font-primary), 'Noto Sans JP', sans-serif;
+}

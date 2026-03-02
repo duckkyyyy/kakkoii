@@ -3,6 +3,8 @@ export { default as Button } from './atoms/Button';
 export { default as Tag } from './atoms/Tag';
 export { default as Typography } from './atoms/Typography';
 export { default as Icon } from './atoms/Icon';
+export { default as TestChoiceInput } from './atoms/TestChoiceInput';
+export { default as GrammarTag } from './atoms/GrammarTag';
 export { default as Container } from './atoms/Container';
 export { default as Grid } from './atoms/Grid';
 export { default as Column } from './atoms/Column';
