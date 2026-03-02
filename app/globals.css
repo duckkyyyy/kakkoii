@@ -32,6 +32,10 @@
   --color-white: #F8F8F8;
   --color-gray: #E9E9E9;
   
+  /* header: top 40px + border 4px + padding 20px + inner ~45px + padding 20px + border 4px ≈ 133px */
+  --header-bottom: 133px;
+  --materials-gap: 20px;
+  
   --font-primary: 'Gilroy', system-ui, sans-serif;
   
   --text-desktop-h1: 60px;
@@ -137,7 +141,9 @@ h4 {
 }
 
 .main-with-header {
-  padding-top: 165px;
+  padding-top: 125px; /* header top 40px + height ~85px = 125; page padding 40px даёт gap 40px до первого блока */
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 /* Header: ширина по viewport с отступами 40px, всё содержимое внутри обводки */
@@ -615,7 +621,7 @@ h4 {
   min-width: 0;
   text-decoration: none;
   color: inherit;
-  border: 2px solid var(--color-black);
+  border: 4px solid var(--color-black);
   background-color: var(--color-white);
   overflow: hidden;
   transition: background-color 0.2s;
@@ -704,20 +710,24 @@ h4 {
 }
 
 .article-card__title {
+  font-size: 32px;
   font-weight: 600;
   line-height: 1.2;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .article-card__description {
+  font-size: 20px;
   color: rgba(28, 27, 27, 0.8);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .article-card:hover .article-card__title,
@@ -900,7 +910,7 @@ h4 {
 /* ArticleSidebar — сайдбар статьи, прилипает справа, ширина 3 колонки */
 .article-sidebar {
   position: sticky;
-  top: 165px;
+  top: 125px;
   align-self: flex-start;
   display: flex;
   flex-direction: column;
@@ -1518,4 +1528,108 @@ h4 {
   margin: 0;
   flex-shrink: 0;
   font-family: var(--font-primary), 'Noto Sans JP', sans-serif;
+}
+
+/* Materials — страница материалов: сайдбар 2 колонки, карточки 10 колонок */
+.materials {
+  /* отступ от header-bottom + gap до контента */
+  padding: calc(var(--header-bottom) - 125px + var(--materials-gap)) var(--container-padding) 40px;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.materials__layout {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  align-items: start;
+}
+
+.materials__sidebar {
+  grid-column: span 2;
+  position: fixed;
+  top: var(--header-bottom);
+  bottom: 20px;
+  margin-top: var(--materials-gap);
+  box-sizing: border-box;
+  border: 4px solid var(--color-black);
+  background-color: var(--color-white);
+  left: max(40px, calc((100vw - var(--container-max-width, 1920px)) / 2 + 40px));
+  width: calc((min(1840px, 100vw - 80px) - 220px) / 12 * 2);
+}
+
+.materials__filter {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: none;
+}
+
+.materials__filter .category-filter__category .typo {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.materials__filter .category-filter__tags .tag {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.materials__articles {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  grid-column: 3 / -1;
+}
+
+.materials__load-more {
+  grid-column: 1 / -1;
+}
+
+.materials__load-btn {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .materials {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* 768: сайдбар сверху, карточки 2 в ряд */
+@media (max-width: 768px) {
+  .materials__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .materials__sidebar {
+    grid-column: span 1;
+    position: static;
+    order: -1;
+  }
+
+  .materials__articles {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .materials__articles .materials__card {
+    grid-column: span 1 !important;
+  }
+}
+
+/* 390: одна карточка в ряд */
+@media (max-width: 390px) {
+  .materials__articles {
+    grid-template-columns: 1fr;
+  }
+
+  .materials__articles .materials__card {
+    grid-column: span 1 !important;
+  }
 }

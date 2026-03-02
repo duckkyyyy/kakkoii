@@ -45,7 +45,7 @@ export default function ArticleCard({
         {tags.length > 0 && (
           <div className="article-card__tags">
             {tags.map((tag, i) => (
-              <Tag key={i} size="small" variant="default" className="article-card__tag">
+              <Tag key={i} size="medium" variant="default" className="article-card__tag">
                 {typeof tag === 'string' ? tag : tag.label}
               </Tag>
             ))}
