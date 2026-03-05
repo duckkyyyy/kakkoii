@@ -2,10 +2,10 @@
 
 import clsx from 'clsx';
 
-export default function Button({ 
-  children, 
-  variant = 'main',        // 'main' или 'secondary'
-  size = 'big',            // 'big' или 'small'
+export default function Button({
+  children,
+  variant = 'main',
+  size = 'big',
   disabled = false,
   className,
   onClick,

@@ -1,21 +1,21 @@
 import './globals.css'
-import Header from './components/organisms/Header'
-import Footer from './components/organisms/Footer'
+import AppShell from './components/AppShell'
 
 export const metadata = {
-  title: 'Мой проект',
+  title: 'KAKKOII',
   description: 'Описание проекта',
+  icons: {
+    icon: '/images/favicon.ico',
+  },
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
       <body>
-        <Header />
-        <main className="main-with-header">
+        <AppShell>
           {children}
-        </main>
-        <Footer />
+        </AppShell>
       </body>
     </html>
   );

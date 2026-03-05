@@ -1,0 +1,41 @@
+{
+  "character": "日",
+  "meaning": "День, солнце; счетчик для дней",
+  "onyomi": { "jp": "ニチ、ジツ", "romaji": "nichi, jitsu" },
+  "kunyomi": { "jp": "ひ、-び、-か", "romaji": "hi, -bi, -ka" },
+  "onyomiTip": "Китайское чтение. Используется преимущественно в сложных словах, состоящих из двух и более иероглифов.",
+  "kunyomiTip": "Японское чтение. Используется в одиночных иероглифах, глаголах, прилагательных.",
+  "kunyomiWords": [
+    { "word": "日", "reading": "ひ", "translation": "день" },
+    { "word": "記念日", "reading": "きねんび", "translation": "годовщина" }
+  ],
+  "onyomiWords": [
+    { "word": "同日", "reading": "どうじつ", "translation": "тот же день" },
+    { "word": "前日", "reading": "ぜんじつ", "translation": "предыдущий день" },
+    { "word": "毎日", "reading": "まいにち", "translation": "каждый день" },
+    { "word": "翌日", "reading": "よくじつ", "translation": "следующий день" },
+    { "word": "日時", "reading": "にちじ", "translation": "дата и время" },
+    { "word": "休日", "reading": "きゅうじつ", "translation": "отпуск" },
+    { "word": "日曜", "reading": "にちよう", "translation": "воскресенье" },
+    { "word": "日本", "reading": "にほん", "translation": "Япония" },
+    { "word": "日本人", "reading": "にほんじん", "translation": "японец" },
+    { "word": "日本語", "reading": "にほんご", "translation": "японский язык" }
+  ],
+  "specialReadings": [
+    { "word": "今日", "reading": "きょう", "translation": "сегодня" },
+    { "word": "明日", "reading": "あした", "translation": "завтра" },
+    { "word": "昨日", "reading": "きのう", "translation": "вчера" }
+  ],
+  "sentences": [
+    { "reading": "まいにち、にほんごをべんきょうします", "jp": "毎日、日本語を勉強します", "ru": "Я учу японский каждый день" },
+    { "reading": "あしたあなたはなにをするのですか", "jp": "明日あなたは何をするのですか", "ru": "Что ты делаешь завтра?" },
+    { "reading": "にほんのなかであなたはどこにいきたいですか", "jp": "日本の中であなたはどこに行きたいですか", "ru": "Куда ты хочешь поехать в Японии?" },
+    { "reading": "わたしはすうじつかんやすみます", "jp": "私は数日間休みます", "ru": "Я возьму отгул на пару дней" }
+  ],
+  "video": {
+    "title": "Клинок, рассекающий демонов. 2 сезон, 1 серия",
+    "phrase": "毎日楽しくて",
+    "phraseReading": "まいにちたのしくて",
+    "translation": "С ним каждый день так весело"
+  }
+}

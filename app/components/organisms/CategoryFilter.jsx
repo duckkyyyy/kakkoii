@@ -13,20 +13,11 @@ const DEFAULT_CATEGORIES = [
   'Аудио',
 ];
 
-const DEFAULT_TAGS = [
-  'Культура',
-  'Еда',
-  'История',
-  'Мифология',
-  'Аниме',
-  'Манга',
-  'Игры',
-  'Литература',
-  'Музыка',
-];
+const DEFAULT_TAGS = [];
 
 export default function CategoryFilter({
   categories = DEFAULT_CATEGORIES,
+  disabledCategories = [],
   tags = DEFAULT_TAGS,
   activeCategory = null,
   chosenTags: controlledChosenTags,
@@ -58,17 +49,21 @@ export default function CategoryFilter({
           const label = typeof item === 'string' ? item : item.label;
           const value = typeof item === 'string' ? item : item.value ?? item.label;
           const isActive = activeCategory !== null && activeCategory === value;
+          const isDisabled = disabledCategories.includes(value);
 
           return (
             <button
               key={value}
               type="button"
+              disabled={isDisabled}
               className={clsx(
                 'category-filter__category',
-                isActive && 'category-filter__category_active'
+                isActive && 'category-filter__category_active',
+                isDisabled && 'category-filter__category_disabled'
               )}
-              onClick={() => onCategoryClick?.(value)}
+              onClick={() => !isDisabled && onCategoryClick?.(value)}
               aria-pressed={isActive}
+              aria-disabled={isDisabled}
             >
               <Typography variant="20-medium">
                 {label}

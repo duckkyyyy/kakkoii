@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ArticleTest",
+  "description": "Тест в конце статьи: выбор варианта (лексика, чтение, аудирование) или грамматика (drag&drop).",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "choice" },
+        "question": { "type": "string", "description": "Один вопрос (если нет questions)" },
+        "image": { "type": "string" },
+        "choices": { "type": "array", "items": { "type": "string" } },
+        "correctChoiceIndex": { "type": "integer", "minimum": 0 },
+        "questions": {
+          "type": "array",
+          "description": "Несколько вопросов: каждый { question, choices, correctChoiceIndex, image? }",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": { "type": "string" },
+              "choices": { "type": "array", "items": { "type": "string" } },
+              "correctChoiceIndex": { "type": "integer" },
+              "image": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["type", "instruction", "correctWords", "distractors"],
+      "properties": {
+        "type": { "const": "grammar" },
+        "instruction": { "type": "string" },
+        "sentence": { "type": "string" },
+        "image": { "type": "string" },
+        "correctWords": { "type": "array", "items": { "type": "string" } },
+        "distractors": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  ]
+}

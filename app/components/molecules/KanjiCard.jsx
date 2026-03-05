@@ -3,10 +3,6 @@
 import clsx from 'clsx';
 import Typography from '../atoms/Typography';
 
-/**
- * Карточка кандзи с чтением и переводом.
- * При наведении инвертируются цвета (белый фон → чёрный, чёрный текст → белый).
- */
 export default function KanjiCard({
   kanji,
   meaning,

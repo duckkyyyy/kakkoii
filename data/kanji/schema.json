@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Kanji",
+  "description": "Кандзи: карточка (перевод, онъёми, кунъёми), три блока примеров слов, примеры предложений, блок видео с описанием.",
+  "type": "object",
+  "required": ["character", "meaning", "onyomi", "kunyomi", "onyomiWords", "kunyomiWords", "specialReadings", "sentences", "video"],
+  "properties": {
+    "character": { "type": "string", "description": "Символ кандзи (один иероглиф)" },
+    "meaning": { "type": "string" },
+    "onyomi": {
+      "type": "object",
+      "properties": {
+        "jp": { "type": "string" },
+        "romaji": { "type": "string" }
+      }
+    },
+    "kunyomi": {
+      "type": "object",
+      "properties": {
+        "jp": { "type": "string" },
+        "romaji": { "type": "string" }
+      }
+    },
+    "onyomiTip": { "type": "string" },
+    "kunyomiTip": { "type": "string" },
+    "onyomiWords": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "word": {}, "reading": {}, "translation": {} } }
+    },
+    "kunyomiWords": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "word": {}, "reading": {}, "translation": {} } }
+    },
+    "specialReadings": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "word": {}, "reading": {}, "translation": {} } }
+    },
+    "sentences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "reading": { "type": "string" },
+          "jp": { "type": "string" },
+          "ru": { "type": "string" }
+        }
+      }
+    },
+    "video": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Название аниме / серии" },
+        "phrase": { "type": "string", "description": "Фраза на японском" },
+        "phraseReading": { "type": "string", "description": "Чтение фразы (ромадзи)" },
+        "translation": { "type": "string" }
+      }
+    }
+  }
+}

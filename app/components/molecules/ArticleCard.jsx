@@ -5,10 +5,6 @@ import Image from 'next/image';
 import Tag from '../atoms/Tag';
 import Typography from '../atoms/Typography';
 
-/**
- * Карточка статьи. Ширина задаётся количеством колонок в сетке (desktop / tablet / mobile).
- * Использовать внутри Grid: <Grid><ArticleCard cols={4} ... /></Grid>
- */
 export default function ArticleCard({
   href,
   image,
@@ -17,7 +13,6 @@ export default function ArticleCard({
   title,
   description,
   readLabel = 'Читать',
-  // колонки сетки (1–12): ширина карточки = cols
   cols = 4,
   tabletCols = null,
   mobileCols = null,
@@ -39,6 +34,7 @@ export default function ArticleCard({
               fill
               className="article-card__image"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+              unoptimized={typeof image === 'string' && image.includes('/kai/')}
             />
           )}
         </div>

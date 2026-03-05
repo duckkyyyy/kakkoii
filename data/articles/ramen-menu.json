@@ -1,0 +1,101 @@
+{
+  "slug": "ramen-menu",
+  "type": "reading",
+  "title": "Меню в японском ресторане: что скрывается за названиями блюд",
+  "image": "/images/covers/ramen-menu.png",
+  "cover": "/images/covers/ramen-menu.png",
+  "backHref": "/",
+  "toc": [
+    { "id": "intro", "label": "Введение" },
+    { "id": "text", "label": "Текст" },
+    { "id": "vocab", "label": "Словарь" },
+    { "id": "test", "label": "Проверка себя" }
+  ],
+  "links": [{ "href": "#", "label": "Конспект" }],
+  "introduction": "Заказывать еду в Японии страшно только первый раз. Мы взяли реальное меню из раменной и разобрали каждую строчку. Теперь ты не перепутаешь «соевый» с «мисо» и точно получишь то, что хотел.",
+  "tags": ["Чтение", "Еда"],
+  "readingBlock": {
+    "id": "text",
+    "paragraphs": [
+      [
+        { "type": "text", "value": "ラーメン屋のメニュー" }
+      ],
+      [
+        { "type": "text", "value": "・" },
+        { "type": "word", "value": "醤油", "translation": "соевый соус" },
+        { "type": "text", "value": "ラーメン - 800円" }
+      ],
+      [
+        { "type": "text", "value": "・" },
+        { "type": "word", "value": "味噌", "translation": "мисо (паста из соевых бобов)" },
+        { "type": "text", "value": "ラーメン - 900円" }
+      ],
+      [
+        { "type": "text", "value": "・" },
+        { "type": "word", "value": "チャーシュー", "translation": "ча-шу (свинина)" },
+        { "type": "text", "value": "麺 - 1100円" }
+      ],
+      [
+        { "type": "text", "value": "・" },
+        { "type": "word", "value": "餃子", "translation": "гёдза (жареные пельмени)" },
+        { "type": "text", "value": " (6個) - 400円" }
+      ],
+      [
+        { "type": "text", "value": "・ライス - 200円" }
+      ],
+      [
+        { "type": "text", "value": "※" },
+        { "type": "word", "value": "大盛り", "translation": "большая порция" },
+        { "type": "text", "value": "無料" }
+      ],
+      [
+        { "type": "text", "value": "※" },
+        { "type": "word", "value": "替玉", "translation": "дополнительная порция лапши" },
+        { "type": "text", "value": "あり (1玉 100円)" }
+      ]
+    ]
+  },
+  "vocabWords": [
+    { "kanji": "醤油", "reading": "しょうゆ", "translation": "соевый соус" },
+    { "kanji": "味噌", "reading": "みそ", "translation": "мисо (паста из соевых бобов)" },
+    { "kanji": "チャーシュー", "reading": "ちゃーしゅー", "translation": "ча-шу (свинина)" },
+    { "kanji": "餃子", "reading": "ぎょうざ", "translation": "гёдза (жареные пельмени)" },
+    { "kanji": "大盛り", "reading": "おおもり", "translation": "большая порция" },
+    { "kanji": "替玉", "reading": "かえだま", "translation": "дополнительная порция лапши" }
+  ],
+  "test": {
+    "type": "choice",
+    "resultImage": "/images/test-questions/ramen-menu-result.png",
+    "questions": [
+      {
+        "question": "Что означает 醤油 в названии 醤油ラーメン?",
+        "image": "/images/test-questions/ramen-menu-q1.png",
+        "choices": ["Мисо", "Соевый соус", "Свинина", "Острый соус"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Сколько стоит 味噌ラーメン?",
+        "image": "/images/test-questions/ramen-menu-q2.png",
+        "choices": ["800円", "900円", "1100円", "400円"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Что такое 替玉?",
+        "image": "/images/test-questions/ramen-menu-q3.png",
+        "choices": ["Большая порция", "Дополнительная порция лапши", "Жареные пельмени", "Рис"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Что значит 大盛り無料?",
+        "image": "/images/test-questions/ramen-menu-q4.png",
+        "choices": ["Дополнительная лапша платная", "Большая порция бесплатно", "Пельмени со скидкой", "Рис в подарок"],
+        "correctChoiceIndex": 1
+      }
+    ]
+  },
+  "related": [
+    { "slug": "blogger-weekend", "image": "/images/covers/blogger-weekend.png", "tags": ["Чтение", "Соцсети"], "title": "Пост японского блогера: как он провёл выходные", "description": "Реальные посты японцев — разговорные конструкции." },
+    { "slug": "weather-forecast", "image": "/images/covers/weather-forecast.png", "tags": ["Чтение", "Новости"], "title": "Прогноз погоды: что говорят в японских новостях", "description": "Простые конструкции и лексика для прогноза погоды." },
+    { "slug": "10-slov-anime", "image": "/images/covers/10-slov-anime-cover.png", "tags": ["Лексика", "Аниме"], "title": "10 слов из каждого аниме", "description": "От «めっちゃ» до «マジで» — топ слов из аниме." }
+  ]
+}

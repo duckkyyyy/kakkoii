@@ -1,0 +1,90 @@
+{
+  "slug": "weather-forecast",
+  "type": "reading",
+  "title": "Прогноз погоды: что говорят в японских новостях",
+  "image": "/images/covers/weather-forecast.png",
+  "cover": "/images/covers/weather-forecast.png",
+  "backHref": "/",
+  "toc": [
+    { "id": "intro", "label": "Введение" },
+    { "id": "text", "label": "Текст" },
+    { "id": "vocab", "label": "Словарь" },
+    { "id": "test", "label": "Проверка себя" }
+  ],
+  "links": [{ "href": "#", "label": "Конспект" }],
+  "introduction": "Хочешь понимать, что говорят дикторы в японских новостях? Начни с прогноза погоды — там простые конструкции и повторяющаяся лексика. Разбираем типичный прогноз и учимся говорить о погоде как взрослый.",
+  "tags": ["Чтение", "Новости"],
+  "readingBlock": {
+    "id": "text",
+    "paragraphs": [
+      [
+        { "type": "text", "value": "明日の" },
+        { "type": "word", "value": "天気予報", "translation": "прогноз погоды" }
+      ],
+      [
+        { "type": "text", "value": "関東地方は一日中" },
+        { "type": "word", "value": "晴れ", "translation": "ясно, солнечно" },
+        { "type": "text", "value": "でしょう。" }
+      ],
+      [
+        { "type": "word", "value": "最高気温", "translation": "максимальная температура" },
+        { "type": "text", "value": "は25度で、" },
+        { "type": "word", "value": "過ごしやすい", "translation": "комфортный" },
+        { "type": "text", "value": "一日になりそうです。" }
+      ],
+      [
+        { "type": "text", "value": "ただ、夜は急に" },
+        { "type": "word", "value": "冷え込む", "translation": "холодать" },
+        { "type": "text", "value": "ので、" },
+        { "type": "word", "value": "上着", "translation": "верхняя одежда" },
+        { "type": "text", "value": "があると安心です。" }
+      ],
+      [
+        { "type": "text", "value": "一方、北海道は雨で、午後から風も強まる見込みです。" }
+      ]
+    ]
+  },
+  "vocabWords": [
+    { "kanji": "天気予報", "reading": "てんきよほう", "translation": "прогноз погоды" },
+    { "kanji": "晴れ", "reading": "はれ", "translation": "ясно, солнечно" },
+    { "kanji": "最高気温", "reading": "さいこうきおん", "translation": "максимальная температура" },
+    { "kanji": "過ごしやすい", "reading": "すごしやすい", "translation": "комфортный (для времяпрепровождения)" },
+    { "kanji": "冷え込む", "reading": "ひえこむ", "translation": "холодать, становиться холодно" },
+    { "kanji": "上着", "reading": "うわぎ", "translation": "верхняя одежда" }
+  ],
+  "test": {
+    "type": "choice",
+    "resultImage": "/images/test-questions/weather-forecast-result.png",
+    "questions": [
+      {
+        "question": "Что такое 天気予報 в заголовке?",
+        "image": "/images/test-questions/weather-forecast-q1.png",
+        "choices": ["Температура", "Прогноз погоды", "Время суток", "Регион"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Какая погода ожидается в Канто (関東)?",
+        "image": "/images/test-questions/weather-forecast-q2.png",
+        "choices": ["Дождь весь день", "晴れ — ясно весь день", "Снег", "Туман"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Что советуют взять с собой вечером и почему?",
+        "image": "/images/test-questions/weather-forecast-q3.png",
+        "choices": ["Зонт — будет дождь", "上着 — будет холодеть", "Солнцезащитные очки", "Ничего не нужно"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Что ожидается в Хоккайдо (北海道)?",
+        "image": "/images/test-questions/weather-forecast-q4.png",
+        "choices": ["Ясно и тепло", "雨 и усиление ветра с полудня", "Снегопад утром", "Жара"],
+        "correctChoiceIndex": 1
+      }
+    ]
+  },
+  "related": [
+    { "slug": "ramen-menu", "image": "/images/covers/ramen-menu.png", "tags": ["Чтение", "Еда"], "title": "Меню в японском ресторане", "description": "Реальное меню раменной — разобрали каждую строчку." },
+    { "slug": "blogger-weekend", "image": "/images/covers/blogger-weekend.png", "tags": ["Чтение", "Соцсети"], "title": "Пост японского блогера: как он провёл выходные", "description": "Реальные посты японцев — разговорные конструкции." },
+    { "slug": "jujutsu-first-page", "image": "/images/covers/jujutsu-first-page.png", "tags": ["Чтение", "Манга"], "title": "Первая страница манги «Магическая битва»", "description": "Первый разворот культовой манги." }
+  ]
+}

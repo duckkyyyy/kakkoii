@@ -5,11 +5,10 @@ import Link from 'next/link';
 import ArrowUp from '../atoms/icons/arrowup';
 
 export default function Footer() {
-  // Функция для прокрутки вверх
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth' // плавная прокрутка
+      behavior: 'smooth'
     });
   };
 
@@ -26,7 +25,6 @@ export default function Footer() {
           />
         </Link>
 
-        {/* Кнопка "наверх" справа */}
         <button
           onClick={scrollToTop}
           className="footer-icon-btn"

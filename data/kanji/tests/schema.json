@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KanjiTest",
+  "description": "Тест по кандзи: 8 типов вопросов (значение, онъёми, кунъёми, перевод слова, чтение слова, особое чтение, аудио, рисование).",
+  "type": "object",
+  "required": ["character", "title", "questions"],
+  "properties": {
+    "character": { "type": "string" },
+    "title": { "type": "string" },
+    "questions": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "title"],
+        "properties": {
+          "id": { "type": "integer" },
+          "type": {
+            "type": "string",
+            "enum": [
+              "meaning",
+              "onyomi",
+              "kunyomi",
+              "wordTranslation",
+              "wordReading",
+              "specialReading",
+              "audio",
+              "drawing"
+            ]
+          },
+          "title": { "type": "string" },
+          "prompt": { "type": "string" },
+          "choices": { "type": "array", "items": { "type": "string" } },
+          "correctChoiceIndex": { "type": "integer" },
+          "example": {
+            "type": "object",
+            "properties": { "jp": {}, "ru": {} }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "slug": "jujutsu-first-page",
+  "type": "reading",
+  "title": "Первая страница манги «Магическая битва»",
+  "image": "/images/covers/jujutsu-first-page.png",
+  "cover": "/images/covers/jujutsu-first-page.png",
+  "backHref": "/",
+  "toc": [
+    { "id": "intro", "label": "Введение" },
+    { "id": "text", "label": "Текст" },
+    { "id": "vocab", "label": "Словарь" },
+    { "id": "test", "label": "Проверка себя" }
+  ],
+  "links": [{ "href": "#", "label": "Конспект" }],
+  "introduction": "Всё началось с этой страницы. Мы разобрали самый первый разворот культовой манги: от знаменитой фразы про «бестактного учителя» до согласия Мегуми взять на себя опасную миссию. Разбираем диалог, ключевые выражения и учимся читать мангу в оригинале.",
+  "tags": ["Чтение", "Манга"],
+  "readingBlock": {
+    "id": "text",
+    "paragraphs": [
+      [
+        { "type": "text", "value": "五条: 「特級呪物 そんな所に 保管するとか " },
+        { "type": "word", "value": "馬鹿過ぎる", "translation": "слишком глупо" },
+        { "type": "text", "value": "でしょ」" }
+      ],
+      [
+        { "type": "text", "value": "伏黒 (心の声): 「" },
+        { "type": "word", "value": "空気の読めない人", "translation": "бестактный человек" },
+        { "type": "text", "value": "だ……」" }
+      ],
+      [
+        { "type": "text", "value": "伏黒: 「わかった。" },
+        { "type": "word", "value": "引き受けた", "translation": "беру на себя" },
+        { "type": "text", "value": "。」" }
+      ],
+      [
+        { "type": "text", "value": "五条: 「アハハ」" }
+      ],
+      [
+        { "type": "text", "value": "伏黒: 「" },
+        { "type": "word", "value": "百葉箱", "translation": "метеобудка" },
+        { "type": "text", "value": "？」" }
+      ],
+      [
+        { "type": "text", "value": "五条: 「え？」" }
+      ],
+      [
+        { "type": "text", "value": "伏黒: 「" },
+        { "type": "word", "value": "空", "translation": "пустой" },
+        { "type": "text", "value": "ですよ 百葉箱」" }
+      ],
+      [
+        { "type": "text", "value": "五条: 「回？」" }
+      ],
+      [
+        { "type": "text", "value": "（笑）" }
+      ],
+      [
+        { "type": "text", "value": "五条: 「" },
+        { "type": "word", "value": "今度", "translation": "в следующий раз" },
+        { "type": "text", "value": "」" }
+      ]
+    ]
+  },
+  "vocabWords": [
+    { "kanji": "馬鹿過ぎる", "reading": "ばかすぎる", "translation": "слишком глупо" },
+    { "kanji": "空気の読めない人", "reading": "くうきのよめないひと", "translation": "бестактный человек" },
+    { "kanji": "引き受ける", "reading": "ひきうける", "translation": "брать на себя" },
+    { "kanji": "百葉箱", "reading": "ひゃくようばこ", "translation": "метеорологическая будка" },
+    { "kanji": "空", "reading": "から", "translation": "пустой" },
+    { "kanji": "今度", "reading": "こんど", "translation": "в следующий раз" }
+  ],
+  "test": {
+    "type": "choice",
+    "resultImage": "/images/test-questions/jujutsu-first-page-result.png",
+    "questions": [
+      {
+        "question": "Как Годжо (五条) оценивает хранение предмета в том месте?",
+        "image": "/images/test-questions/jujutsu-first-page-q1.png",
+        "choices": ["Очень умно", "馬鹿過ぎる — слишком глупо", "Опасно", "Нормально"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "О ком так думает Фушигуро (伏黒) в мыслях?",
+        "image": "/images/test-questions/jujutsu-first-page-q2.png",
+        "choices": ["О сильном сопернике", "空気の読めない人 — бестактный человек", "О друге", "О учителе"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Что говорит Фушигуро после «わかった»?",
+        "image": "/images/test-questions/jujutsu-first-page-q3.png",
+        "choices": ["Отказываюсь", "引き受けた — беру на себя", "Подожду", "Не знаю"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Что значит 今度 в последней реплике Годжо?",
+        "image": "/images/test-questions/jujutsu-first-page-q4.png",
+        "choices": ["Сегодня", "В следующий раз", "Никогда", "Сейчас"],
+        "correctChoiceIndex": 1
+      }
+    ]
+  },
+  "related": [
+    { "slug": "te-forma", "image": "/images/covers/te-forma.png", "tags": ["Грамматика", "Манга"], "title": "て-форма: главное комбо японского языка", "description": "Соединять действия, просить, описывать процесс." },
+    { "slug": "chasticy-wa-i-ga", "image": "/images/covers/chasticy-wa-i-ga.png", "tags": ["Грамматика", "Манга"], "title": "Война миров: は vs が", "description": "Когда は, а когда が? Разбираем на примерах из аниме." },
+    { "slug": "rugatelstva-anime", "image": "/images/covers/rugatelstva-anime.png", "tags": ["Лексика", "Аниме"], "title": "Как ругаются в японских аниме", "description": "バカ, くそ, この野郎. Разбираем ругательства из аниме." }
+  ]
+}

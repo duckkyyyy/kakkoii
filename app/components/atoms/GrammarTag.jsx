@@ -3,16 +3,6 @@
 import clsx from 'clsx';
 import { Checkmark, Cross } from './icons';
 
-/**
- * Грамматический тег для выбора в тестах.
- * Логика как у TestChoiceInput.
- * Состояния:
- * - default — дефолт
- * - selected — выбранный
- * - selectedCorrect — выбранный и правильный
- * - selectedWrong — выбранный и неправильный
- * - unselectedCorrect — невыбранный и правильный
- */
 export default function GrammarTag({
   children,
   state = 'default',

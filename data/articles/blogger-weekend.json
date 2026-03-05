@@ -1,0 +1,92 @@
+{
+  "slug": "blogger-weekend",
+  "type": "reading",
+  "title": "Пост японского блогера: как он провёл выходные",
+  "image": "/images/covers/blogger-weekend.png",
+  "cover": "/images/covers/blogger-weekend.png",
+  "backHref": "/",
+  "toc": [
+    { "id": "intro", "label": "Введение" },
+    { "id": "text", "label": "Текст" },
+    { "id": "vocab", "label": "Словарь" },
+    { "id": "test", "label": "Проверка себя" }
+  ],
+  "links": [{ "href": "#", "label": "Конспект" }],
+  "introduction": "Реальные посты японцев в соцсетях — это не учебниковый японский. Мы взяли пост обычного парня о поездке на море и разобрали все разговорные конструкции. Читай и учись выражать эмоции как носитель.",
+  "tags": ["Чтение", "Соцсети"],
+  "readingBlock": {
+    "id": "text",
+    "paragraphs": [
+      [
+        { "type": "text", "value": "昨日は" },
+        { "type": "word", "value": "久しぶり", "translation": "впервые за долгое время" },
+        { "type": "text", "value": "に海に行ってきました！" }
+      ],
+      [
+        { "type": "word", "value": "天気", "translation": "погода" },
+        { "type": "text", "value": "が良くて、すごく" },
+        { "type": "word", "value": "気持ち良かった", "translation": "приятно, хорошо" },
+        { "type": "text", "value": "です。" }
+      ],
+      [
+        { "type": "word", "value": "泳ぐ", "translation": "плавать" },
+        { "type": "text", "value": "のはちょっと寒かったけど、" }
+      ],
+      [
+        { "type": "text", "value": "友達と" },
+        { "type": "word", "value": "バーベキュー", "translation": "барбекю" },
+        { "type": "text", "value": "をして、楽しかったなあ。" }
+      ],
+      [
+        { "type": "word", "value": "やっぱり", "translation": "как и ожидалось, всё-таки" },
+        { "type": "text", "value": "海はいいですね！" }
+      ],
+      [
+        { "type": "text", "value": "また来月も行きたいです" }
+      ]
+    ]
+  },
+  "vocabWords": [
+    { "kanji": "久しぶり", "reading": "ひさしぶり", "translation": "давно не виделись / впервые за долгое время" },
+    { "kanji": "天気", "reading": "てんき", "translation": "погода" },
+    { "kanji": "気持ち良い", "reading": "きもちいい", "translation": "приятно, хорошо" },
+    { "kanji": "泳ぐ", "reading": "およぐ", "translation": "плавать" },
+    { "kanji": "バーベキュー", "reading": "ばーべきゅー", "translation": "барбекю" },
+    { "kanji": "やっぱり", "reading": "やっぱり", "translation": "как и ожидалось, всё-таки" }
+  ],
+  "test": {
+    "type": "choice",
+    "resultImage": "/images/test-questions/blogger-weekend-result.png",
+    "questions": [
+      {
+        "question": "Что значит 久しぶり в первой фразе поста?",
+        "image": "/images/test-questions/blogger-weekend-q1.png",
+        "choices": ["Впервые в жизни", "Впервые за долгое время", "Каждый день", "Вчера утром"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Как автор описывает погоду и ощущения?",
+        "image": "/images/test-questions/blogger-weekend-q2.png",
+        "choices": ["天気が悪くて寒かった", "天気が良くて、すごく気持ち良かった", "天気が曇りだった", "天気は普通だった"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Что они делали с друзьями на море?",
+        "image": "/images/test-questions/blogger-weekend-q3.png",
+        "choices": ["泳いだだけ", "バーベキューをした", "写真を撮っただけ", "昼寝をした"],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Что выражает やっぱり в фразе «やっぱり海はいいですね»?",
+        "image": "/images/test-questions/blogger-weekend-q4.png",
+        "choices": ["Удивление", "Как и ожидалось, согласие с собой", "Сожаление", "Вопрос"],
+        "correctChoiceIndex": 1
+      }
+    ]
+  },
+  "related": [
+    { "slug": "ramen-menu", "image": "/images/covers/ramen-menu.png", "tags": ["Чтение", "Еда"], "title": "Меню в японском ресторане", "description": "Реальное меню раменной — разобрали каждую строчку." },
+    { "slug": "weather-forecast", "image": "/images/covers/weather-forecast.png", "tags": ["Чтение", "Новости"], "title": "Прогноз погоды в японских новостях", "description": "Простые конструкции для прогноза погоды." },
+    { "slug": "jujutsu-first-page", "image": "/images/covers/jujutsu-first-page.png", "tags": ["Чтение", "Манга"], "title": "Первая страница манги «Магическая битва»", "description": "Первый разворот культовой манги — читай в оригинале." }
+  ]
+}

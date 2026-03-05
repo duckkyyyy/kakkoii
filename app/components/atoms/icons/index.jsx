@@ -7,3 +7,5 @@ export { default as Play1 } from './play1';
 export { default as Play2 } from './play2';
 export { default as Question } from './question';
 export { default as Search } from './search';
+export { default as Telegram } from './telegram';
+export { default as Vkontakte } from './vkontakte';

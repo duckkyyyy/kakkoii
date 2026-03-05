@@ -4,10 +4,6 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import ArrowUp from '../atoms/icons/arrowup';
 
-/**
- * Обложка статьи по макету Figma. Растягивается на всю ширину экрана (100vw).
- * Использовать в начале страницы статьи.
- */
 export default function ArticleCover({
   image,
   imageAlt = '',
@@ -30,6 +26,7 @@ export default function ArticleCover({
               className="article-cover__image"
               sizes="100vw"
               priority
+              unoptimized={typeof image === 'string' && image.includes('/kai/')}
             />
           )}
         </div>

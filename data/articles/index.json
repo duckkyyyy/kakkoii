@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "10-slov-anime",
+    "type": "lexicon",
+    "title": "10 слов, которые ты слышишь в каждом аниме, но не знаешь, что они значат",
+    "image": "/images/covers/10-slov-anime-cover.png",
+    "cover": "/images/covers/10-slov-anime-cover.png",
+    "tags": ["Лексика", "Аниме"],
+    "description": "Топ самых частых слов из аниме — от «めっちゃ» до «マジで». Запоминай, они будут встречаться тебе постоянно.",
+    "cols": 7
+  },
+  {
+    "slug": "tiktok-twitter-sleneg",
+    "type": "lexicon",
+    "title": "Японский сленг из TikTok и Twitter",
+    "image": "/images/covers/tiktok-twitter-sleneg.png",
+    "cover": "/images/covers/tiktok-twitter-sleneg.png",
+    "tags": ["Лексика", "Сленг"],
+    "description": "Сокращения, странные буквы и смайлики — без этого не поймёшь современного японца в сети.",
+    "cols": 5
+  },
+  {
+    "slug": "slova-intonaciya",
+    "type": "lexicon",
+    "title": "Слова, которые меняют смысл в зависимости от интонации",
+    "image": "/images/covers/slova-intonaciya.png",
+    "cover": "/images/covers/slova-intonaciya.png",
+    "tags": ["Лексика", "Интонация"],
+    "description": "Одно и то же «はい» — и «да», и «чё тебе?», и «что?!!». Разбираем слова-хамелеоны.",
+    "cols": 5
+  },
+  {
+    "slug": "rugatelstva-anime",
+    "type": "lexicon",
+    "title": "Как ругаются в японских аниме",
+    "image": "/images/covers/rugatelstva-anime.png",
+    "cover": "/images/covers/rugatelstva-anime.png",
+    "tags": ["Лексика", "Аниме"],
+    "description": "Нет русского мата, но есть バカ, くそ и この野郎. Разбираем ругательства из аниме.",
+    "cols": 5
+  },
+  {
+    "slug": "yaponskii-sleneg",
+    "type": "lexicon",
+    "title": "Японский сленг: топ фраз, чтобы сойти за своего на Шибуе",
+    "image": "/images/kai/kai-peek.png",
+    "cover": "/images/covers/yaponskii-sleneg.jpg",
+    "tags": ["Лексика", "Сленг"],
+    "description": "«めっちゃ», «やばい», «うるさい» — эти слова звучат в каждом втором аниме. Узнай их настоящие значения и как их использовать.",
+    "cols": 7
+  },
+  {
+    "slug": "chasticy-wa-i-ga",
+    "type": "grammar",
+    "title": "Война миров: は vs が — кто главный в предложении?",
+    "image": "/images/covers/chasticy-wa-i-ga.png",
+    "cover": "/images/covers/chasticy-wa-i-ga.png",
+    "tags": ["Грамматика", "Манга"],
+    "description": "Когда は, а когда が? Разбираем на примерах из аниме — перестанешь путать раз и навсегда.",
+    "cols": 3
+  },
+  {
+    "slug": "te-forma",
+    "type": "grammar",
+    "title": "て-форма: главное комбо японского языка",
+    "image": "/images/covers/te-forma.png",
+    "cover": "/images/covers/te-forma.png",
+    "tags": ["Грамматика", "Манга"],
+    "description": "Соединять действия, просить, описывать процесс. Освой て-форму — ключ к половине японской речи.",
+    "cols": 3
+  },
+  {
+    "slug": "tai-hoshii",
+    "type": "grammar",
+    "title": "〜たい、〜ほしい、〜てほしい: как говорить о своих желаниях",
+    "image": "/images/covers/tai-hoshii.png",
+    "cover": "/images/covers/tai-hoshii.png",
+    "tags": ["Грамматика", "Манга"],
+    "description": "Хочешь сделать сам, хочешь вещь или чтобы другой сделал? Разбираем たい, ほしい и てほしい.",
+    "cols": 3
+  },
+  {
+    "slug": "sugiru",
+    "type": "grammar",
+    "title": "〜すぎる: когда всего слишком много",
+    "image": "/images/covers/sugiru.png",
+    "cover": "/images/covers/sugiru.png",
+    "tags": ["Грамматика", "Манга"],
+    "description": "Слишком жарко, переел, слишком дорого. Освой すぎる — и жалуйся как настоящий японец.",
+    "cols": 3
+  },
+  {
+    "slug": "magic-battle",
+    "type": "audition",
+    "title": "Пойми диалог из «Магической битвы»: Годжо vs. Сукуна",
+    "image": "/images/kai/kai-tired.png",
+    "cover": "/images/covers/magic-battle.jpg",
+    "tags": ["Аудирование", "Магическая битва"],
+    "description": "Разберём культовый диалог на проклятом языке. Услышишь, как грамматика передаёт абсолютную силу и презрение.",
+    "cols": 6
+  },
+  {
+    "slug": "ramen-menu",
+    "type": "reading",
+    "title": "Меню в японском ресторане: что скрывается за названиями блюд",
+    "image": "/images/covers/ramen-menu.png",
+    "cover": "/images/covers/ramen-menu.png",
+    "tags": ["Чтение", "Еда"],
+    "description": "Заказывать еду в Японии страшно только первый раз. Реальное меню раменной — разобрали каждую строчку. Не перепутаешь «соевый» с «мисо».",
+    "cols": 4
+  },
+  {
+    "slug": "blogger-weekend",
+    "type": "reading",
+    "title": "Пост японского блогера: как он провёл выходные",
+    "image": "/images/covers/blogger-weekend.png",
+    "cover": "/images/covers/blogger-weekend.png",
+    "tags": ["Чтение", "Соцсети"],
+    "description": "Реальные посты японцев в соцсетях — не учебниковый японский. Пост о поездке на море и разговорные конструкции.",
+    "cols": 4
+  },
+  {
+    "slug": "weather-forecast",
+    "type": "reading",
+    "title": "Прогноз погоды: что говорят в японских новостях",
+    "image": "/images/covers/weather-forecast.png",
+    "cover": "/images/covers/weather-forecast.png",
+    "tags": ["Чтение", "Новости"],
+    "description": "Начни с прогноза погоды — простые конструкции и повторяющаяся лексика. Говори о погоде как взрослый.",
+    "cols": 4
+  },
+  {
+    "slug": "jujutsu-first-page",
+    "type": "reading",
+    "title": "Первая страница манги «Магическая битва»",
+    "image": "/images/covers/jujutsu-first-page.png",
+    "cover": "/images/covers/jujutsu-first-page.png",
+    "tags": ["Чтение", "Манга"],
+    "description": "Первый разворот культовой манги: от фразы про «бестактного учителя» до согласия Мегуми. Читай в оригинале.",
+    "cols": 4
+  },
+  {
+    "slug": "ramen",
+    "type": "reading",
+    "title": "Прочти и пойми отзыв о рамене как японец",
+    "image": "/images/kai/kai-happy.png",
+    "cover": "/images/covers/ramen.jpg",
+    "tags": ["Чтение", "Еда"],
+    "description": "Научись читать настоящие отзывы из японских блогов о еде. Узнай, как хвалят идеальный бульон и ругают переваренную лапшу.",
+    "cols": 4
+  }
+]

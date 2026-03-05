@@ -4,17 +4,6 @@ import clsx from 'clsx';
 import Typography from '../atoms/Typography';
 import Clip from '../atoms/icons/clip';
 
-/**
- * Сайдбар статьи. Два варианта:
- * - full: оглавление + блок с ссылками (PDF и др.)
- * - links: только блок с ссылками
- *
- * @param {Object} props
- * @param {'full' | 'links'} props.variant - full = оглавление + ссылки, links = только ссылки
- * @param {Array<{id: string, label: string}>} props.tocItems - пункты оглавления (id для якоря)
- * @param {Array<{href: string, label: string}>} props.links - ссылки на PDF и др. файлы
- * @param {string} props.className
- */
 export default function ArticleSidebar({
   variant = 'full',
   tocItems = [],

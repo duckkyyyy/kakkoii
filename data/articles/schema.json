@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Article",
+  "description": "Статья: лексика, грамматика, чтение или аудирование. У каждой 5 контент-блоков и тест в конце.",
+  "type": "object",
+  "required": ["slug", "type", "title", "blocks", "test"],
+  "properties": {
+    "slug": { "type": "string", "description": "Уникальный URL-slug статьи (например chasticy-wa-i-ga)" },
+    "type": {
+      "type": "string",
+      "enum": ["lexicon", "grammar", "reading", "audition"],
+      "description": "Тип статьи"
+    },
+    "title": { "type": "string" },
+    "image": { "type": "string", "description": "URL обложки (дублирует cover для совместимости)" },
+    "cover": { "type": "string", "description": "URL обложки статьи (изображение для карточки и шапки)" },
+    "backHref": { "type": "string", "default": "/" },
+    "toc": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "id": { "type": "string" }, "label": { "type": "string" } } }
+    },
+    "links": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "href": { "type": "string" }, "label": { "type": "string" } } }
+    },
+    "introduction": { "type": "string" },
+    "blocks": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "description": "Ровно 5 блоков контента (для reading/audition часть блоков может быть особыми — текст/видео/словарь)"
+    },
+    "readingBlock": { "type": "object", "description": "Только для type: reading — один блок с японским текстом: { id, paragraphs } (параграф = массив сегментов text/word)" },
+    "vocabWords": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "reading": {}, "kanji": {}, "translation": {} } }
+    },
+    "videoPlaceholder": { "type": "string", "description": "Только для type: audition" },
+    "test": { "type": "object" },
+    "tags": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "string" },
+      "description": "Ровно два тега: [1] тип статьи (Лексика|Грамматика|Чтение|Аудирование), [2] дополнительный тег (Сленг, Манга, Еда и т.д.)"
+    },
+    "related": { "type": "array" }
+  }
+}

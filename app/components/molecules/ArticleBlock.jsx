@@ -3,13 +3,6 @@
 import clsx from 'clsx';
 import Typography from '../atoms/Typography';
 
-/**
- * Блок статьи. Типы по макету Figma:
- * - grammar: заголовок + параграфы + блок Construction (серый фон)
- * - vocab: заголовок + 4 параграфа
- * - reading: один параграф (32px)
- * - introduction: один параграф (24px)
- */
 export default function ArticleBlock({
   type = 'grammar',
   title,
@@ -21,12 +14,32 @@ export default function ArticleBlock({
   const isGrammarOrVocab = ['grammar', 'vocab'].includes(type);
   const isIntroduction = type === 'introduction';
   const isReading = type === 'reading';
+  const isLexicon = type === 'lexicon';
   const isReadingOrIntroduction = ['reading', 'introduction'].includes(type);
 
   const p1 = paragraphs[0] ?? 'Paragraph 1';
   const p2 = paragraphs[1] ?? 'Paragraph 2';
   const p3 = paragraphs[2] ?? 'Paragraph 3';
   const p4 = paragraphs[3] ?? 'Paragraph 4';
+
+  const renderLexiconParagraph = (item) => {
+    if (typeof item === 'string') {
+      return (
+        <Typography key={item.slice(0, 30)} variant="24-medium" className="article-block__text">
+          {item}
+        </Typography>
+      );
+    }
+    if (item?.bold != null && item?.text != null) {
+      return (
+        <Typography key={item.bold} variant="24-medium" className="article-block__text">
+          <span className="article-block__bold">{item.bold}</span>
+          {item.text}
+        </Typography>
+      );
+    }
+    return null;
+  };
 
   return (
     <article
@@ -44,6 +57,17 @@ export default function ArticleBlock({
         >
           {title ?? p1}
         </Typography>
+      ) : isLexicon ? (
+        <>
+          {title && (
+            <Typography variant="h3" className="article-block__title article-block__title--lexicon">
+              {title}
+            </Typography>
+          )}
+          {paragraphs.map((item, i) => (
+            <span key={i}>{renderLexiconParagraph(item)}</span>
+          ))}
+        </>
       ) : (
         <>
           <Typography variant="h4" className="article-block__title">

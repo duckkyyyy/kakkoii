@@ -5,11 +5,6 @@ import clsx from 'clsx';
 import GrammarTag from '../atoms/GrammarTag';
 import Button from '../atoms/Button';
 
-/**
- * Тест по грамматике: расставить слова в правильном порядке.
- * - correctWords: правильный порядок слов
- * - distractors: лишние слова для выбора
- */
 const DEFAULT_SENTENCE = {
   correctWords: ['きのう', '晩ご飯を', '食べて', 'アニメを', '見て', '寝ました'],
   distractors: ['朝ごはん', '後ろ', '明日', '寝みました'],
@@ -33,7 +28,11 @@ function shuffleArray(arr) {
 export default function GrammarTest({
   correctWords = DEFAULT_SENTENCE.correctWords,
   distractors = DEFAULT_SENTENCE.distractors,
+  variant = 'standalone',
+  onSlotsChange,
+  onNext,
 }) {
+  const isEmbedded = variant === 'embedded';
   const [allWords, setAllWords] = useState(() => [
     ...correctWords,
     ...distractors,
@@ -42,12 +41,17 @@ export default function GrammarTest({
 
   useEffect(() => {
     setAllWords(shuffleArray([...correctWords, ...distractors]));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [checked, setChecked] = useState(false);
   const [results, setResults] = useState(null);
   const [draggedWord, setDraggedWord] = useState(null);
   const [dragSource, setDragSource] = useState(null);
+
+  useEffect(() => {
+    if (isEmbedded && onSlotsChange) {
+      onSlotsChange(slots);
+    }
+  }, [isEmbedded, slots, onSlotsChange]);
 
   const handleCheck = useCallback(() => {
     const filled = slots.every(Boolean);
@@ -70,8 +74,11 @@ export default function GrammarTest({
   }, [correctWords]);
 
   const handleNext = useCallback(() => {
-    // TODO: переход к следующему заданию
-  }, []);
+    const filled = slots.every(Boolean);
+    if (!filled) return;
+    const correct = slots.every((w, i) => w === correctWords[i]);
+    onNext?.(correct);
+  }, [slots, correctWords, onNext]);
 
   const handleDragStart = useCallback((e, word, source) => {
     setDraggedWord(word);
@@ -220,38 +227,40 @@ export default function GrammarTest({
         })}
       </div>
 
-      <div className="grammar-test__actions">
-        {!checked ? (
-          <Button
-            variant="main"
-            size="big"
-            onClick={handleCheck}
-            disabled={!filled}
-            className="grammar-test__btn"
-          >
-            Проверить
-          </Button>
-        ) : (
-          <>
-            <Button
-              variant="secondary"
-              size="big"
-              onClick={handleReset}
-              className="grammar-test__btn grammar-test__btn--secondary"
-            >
-              Пройти заново
-            </Button>
+      {!isEmbedded && (
+        <div className="grammar-test__actions">
+          {!checked ? (
             <Button
               variant="main"
               size="big"
-              onClick={handleNext}
+              onClick={handleCheck}
+              disabled={!filled}
               className="grammar-test__btn"
             >
-              Далее
+              Проверить
             </Button>
-          </>
-        )}
-      </div>
+          ) : (
+            <>
+              <Button
+                variant="secondary"
+                size="big"
+                onClick={handleReset}
+                className="grammar-test__btn grammar-test__btn--secondary"
+              >
+                Пройти заново
+              </Button>
+              <Button
+                variant="main"
+                size="big"
+                onClick={handleNext}
+                className="grammar-test__btn"
+              >
+                Далее
+              </Button>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }
