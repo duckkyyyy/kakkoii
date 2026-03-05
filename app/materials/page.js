@@ -17,6 +17,7 @@ export default function MaterialsPage() {
   const [activeCategory, setActiveCategory] = useState('Все');
   const [chosenTags, setChosenTags] = useState([]);
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const filteredByCategory =
     activeCategory === 'Все'
@@ -59,6 +60,36 @@ export default function MaterialsPage() {
     <div className="materials">
       <div className="materials__layout">
         <aside className="materials__sidebar">
+          <button
+            type="button"
+            className="materials__dropdown-trigger"
+            onClick={() => setDropdownOpen((o) => !o)}
+            aria-expanded={dropdownOpen}
+            aria-controls="materials__dropdown-panel"
+            id="materials__dropdown-trigger"
+          >
+            <span className="materials__dropdown-label">{activeCategory}</span>
+            <span className="materials__dropdown-icon" aria-hidden>{dropdownOpen ? '▲' : '▼'}</span>
+          </button>
+          <div
+            id="materials__dropdown-panel"
+            className="materials__dropdown-panel"
+            data-open={dropdownOpen}
+            role="region"
+            aria-labelledby="materials__dropdown-trigger"
+          >
+            <CategoryFilter
+              categories={CATEGORIES}
+              disabledCategories={DISABLED_CATEGORIES}
+              activeCategory={activeCategory}
+              onCategoryClick={(value) => {
+                handleCategoryClick(value);
+                setDropdownOpen(false);
+              }}
+              className="materials__dropdown-filter"
+              categoriesOnly
+            />
+          </div>
           <CategoryFilter
             categories={CATEGORIES}
             disabledCategories={DISABLED_CATEGORIES}
@@ -70,6 +101,15 @@ export default function MaterialsPage() {
             className="materials__filter"
           />
         </aside>
+        <div className="materials__tags-block">
+          <CategoryFilter
+            tags={SECOND_TAGS}
+            chosenTags={chosenTags}
+            onChosenTagsChange={handleChosenTagsChange}
+            className="materials__tags-filter"
+            tagsOnly
+          />
+        </div>
         <div className="materials__articles">
             {visibleArticles.map((article, i) => (
               <ArticleCard

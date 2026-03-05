@@ -25,6 +25,8 @@ export default function CategoryFilter({
   onCategoryClick,
   onTagClick,
   className,
+  categoriesOnly = false,
+  tagsOnly = false,
 }) {
   const [internalChosen, setInternalChosen] = useState([]);
   const chosenTags = controlledChosenTags ?? internalChosen;
@@ -42,54 +44,61 @@ export default function CategoryFilter({
     onTagClick?.(value);
   };
 
+  const showCategories = !tagsOnly;
+  const showTags = !categoriesOnly;
+
   return (
     <aside className={clsx('category-filter', className)}>
-      <nav className="category-filter__categories" aria-label="Категории">
-        {categories.map((item) => {
-          const label = typeof item === 'string' ? item : item.label;
-          const value = typeof item === 'string' ? item : item.value ?? item.label;
-          const isActive = activeCategory !== null && activeCategory === value;
-          const isDisabled = disabledCategories.includes(value);
+      {showCategories && (
+        <nav className="category-filter__categories" aria-label="Категории">
+          {categories.map((item) => {
+            const label = typeof item === 'string' ? item : item.label;
+            const value = typeof item === 'string' ? item : item.value ?? item.label;
+            const isActive = activeCategory !== null && activeCategory === value;
+            const isDisabled = disabledCategories.includes(value);
 
-          return (
-            <button
-              key={value}
-              type="button"
-              disabled={isDisabled}
-              className={clsx(
-                'category-filter__category',
-                isActive && 'category-filter__category_active',
-                isDisabled && 'category-filter__category_disabled'
-              )}
-              onClick={() => !isDisabled && onCategoryClick?.(value)}
-              aria-pressed={isActive}
-              aria-disabled={isDisabled}
-            >
-              <Typography variant="20-medium">
+            return (
+              <button
+                key={value}
+                type="button"
+                disabled={isDisabled}
+                className={clsx(
+                  'category-filter__category',
+                  isActive && 'category-filter__category_active',
+                  isDisabled && 'category-filter__category_disabled'
+                )}
+                onClick={() => !isDisabled && onCategoryClick?.(value)}
+                aria-pressed={isActive}
+                aria-disabled={isDisabled}
+              >
+                <Typography variant="20-medium">
+                  {label}
+                </Typography>
+              </button>
+            );
+          })}
+        </nav>
+      )}
+      {showTags && (
+        <div className="category-filter__tags">
+          {tags.map((item) => {
+            const label = typeof item === 'string' ? item : item.label ?? item;
+            const value = typeof item === 'string' ? item : item.value ?? item;
+            const chosen = chosenTags.includes(value);
+            return (
+              <Tag
+                key={value}
+                variant={chosen ? 'textRemovable' : 'text'}
+                onClick={() => handleTagClick(value)}
+                onClose={chosen ? () => handleTagClose(value) : undefined}
+                className="category-filter__tag"
+              >
                 {label}
-              </Typography>
-            </button>
-          );
-        })}
-      </nav>
-      <div className="category-filter__tags">
-        {tags.map((item) => {
-          const label = typeof item === 'string' ? item : item.label ?? item;
-          const value = typeof item === 'string' ? item : item.value ?? item;
-          const chosen = chosenTags.includes(value);
-          return (
-            <Tag
-              key={value}
-              variant={chosen ? 'textRemovable' : 'text'}
-              onClick={() => handleTagClick(value)}
-              onClose={chosen ? () => handleTagClose(value) : undefined}
-              className="category-filter__tag"
-            >
-              {label}
-            </Tag>
-          );
-        })}
-      </div>
+              </Tag>
+            );
+          })}
+        </div>
+      )}
     </aside>
   );
 }

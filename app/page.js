@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.css';
 import { Tag, Button, TestChoiceInput, ArticleCard, Grid } from './components';
+import { ARTICLES } from './data/articles';
 
 const TEST_QUESTIONS = [
   {
@@ -53,185 +54,19 @@ const TEST_RESULTS = [
   { minScore: 5, title: 'Стадия «мы с тобой навсегда»', text: 'Все пять из пяти. Ты не просто знаешь — ты в теме. Сэнпай гордится. おめでとう!' },
 ];
 
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
 const KAI_PEEK = '/images/kai/kai-peek.png';
 const KAI_SLEEPY = '/images/kai/kai-sleepy.png';
 const KAI_HAPPY = '/images/kai/kai-happy.png';
 
-const ARTICLES = [
-  {
-    id: 0,
-    slug: '10-slov-anime',
-    image: '/images/covers/10-slov-anime-cover.png',
-    tags: ['Лексика', 'Аниме'],
-    title: '10 слов, которые ты слышишь в каждом аниме, но не знаешь, что они значат',
-    description: 'Топ самых частых слов из аниме — от «めっちゃ» до «マジで». Запоминай, они будут встречаться тебе постоянно.',
-    cols: 6,
-    tabletCols: 6,
-    mobileCols: 12,
-  },
-  {
-    id: 2,
-    slug: 'slova-intonaciya',
-    image: '/images/covers/slova-intonaciya.png',
-    tags: ['Лексика', 'Интонация'],
-    title: 'Слова, которые меняют смысл в зависимости от интонации',
-    description: 'Одно и то же «はい» — и «да», и «чё тебе?», и «что?!!». Разбираем слова-хамелеоны.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 3,
-    slug: 'rugatelstva-anime',
-    image: '/images/covers/rugatelstva-anime.png',
-    tags: ['Лексика', 'Аниме'],
-    title: 'Как ругаются в японских аниме',
-    description: 'Нет русского мата, но есть バカ, くそ и この野郎. Разбираем ругательства из аниме.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 4,
-    slug: 'chasticy-wa-i-ga',
-    image: '/images/covers/chasticy-wa-i-ga.png',
-    tags: ['Грамматика', 'Манга'],
-    title: 'Война миров: は vs が — кто главный в предложении?',
-    description: 'Когда は, а когда が? Разбираем на примерах из аниме — перестанешь путать раз и навсегда.',
-    cols: 6,
-    tabletCols: 6,
-    mobileCols: 12,
-  },
-  {
-    id: 5,
-    slug: 'te-forma',
-    image: '/images/covers/te-forma.png',
-    tags: ['Грамматика', 'Манга'],
-    title: 'て-форма: главное комбо японского языка',
-    description: 'Соединять действия, просить, описывать процесс. Освой て-форму — ключ к половине японской речи.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 6,
-    slug: 'tai-hoshii',
-    image: '/images/covers/tai-hoshii.png',
-    tags: ['Грамматика', 'Манга'],
-    title: '〜たい、〜ほしい、〜てほしい: как говорить о своих желаниях',
-    description: 'Хочешь сделать сам, хочешь вещь или чтобы другой сделал? Разбираем たい, ほしい и てほしい.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 7,
-    slug: 'sugiru',
-    image: '/images/covers/sugiru.png',
-    tags: ['Грамматика', 'Манга'],
-    title: '〜すぎる: когда всего слишком много',
-    description: 'Слишком жарко, переел, слишком дорого. Освой すぎる — и жалуйся как настоящий японец.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 8,
-    slug: 'magic-battle',
-    image: '/images/kai/kai-tired.png',
-    tags: ['Аудирование', 'Магическая битва'],
-    title: 'Пойми диалог из «Магической битвы»: Годжо vs. Сукуна',
-    description: 'Разберём культовый диалог на проклятом языке. Услышишь, как грамматика передаёт абсолютную силу и презрение.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 10,
-    slug: 'ramen-menu',
-    image: '/images/covers/ramen-menu.png',
-    tags: ['Чтение', 'Еда'],
-    title: 'Меню в японском ресторане: что скрывается за названиями блюд',
-    description: 'Заказывать еду в Японии страшно только первый раз. Реальное меню раменной — разобрали каждую строчку.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 12,
-    slug: 'blogger-weekend',
-    image: '/images/covers/blogger-weekend.png',
-    tags: ['Чтение', 'Соцсети'],
-    title: 'Пост японского блогера: как он провёл выходные',
-    description: 'Реальные посты японцев — не учебниковый японский. Пост о поездке на море и разговорные конструкции.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 13,
-    slug: 'weather-forecast',
-    image: '/images/covers/weather-forecast.png',
-    tags: ['Чтение', 'Новости'],
-    title: 'Прогноз погоды: что говорят в японских новостях',
-    description: 'Начни с прогноза погоды — простые конструкции. Говори о погоде как взрослый.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 14,
-    slug: 'jujutsu-first-page',
-    image: '/images/covers/jujutsu-first-page.png',
-    tags: ['Чтение', 'Манга'],
-    title: 'Первая страница манги «Магическая битва»',
-    description: 'Первый разворот культовой манги: диалог Годжо и Мегуми. Читай в оригинале.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-  {
-    id: 11,
-    slug: 'tiktok-twitter-sleneg',
-    image: '/images/covers/tiktok-twitter-sleneg.png',
-    tags: ['Лексика', 'Сленг'],
-    title: 'Японский сленг из TikTok и Twitter',
-    description: 'Сокращения, странные буквы и смайлики — без этого не поймёшь современного японца в сети.',
-    cols: 4,
-    tabletCols: 4,
-    mobileCols: 12,
-  },
-];
-
 export default function Home() {
-  const [displayedArticles, setDisplayedArticles] = useState(() => {
-    const picked = ARTICLES.slice(0, 5).map((article, i) => ({
+  const displayedArticles = useMemo(() =>
+    ARTICLES.slice(0, 5).map((article, i) => ({
       ...article,
       cols: i < 2 ? 6 : 4,
       tabletCols: i < 2 ? 6 : 4,
       mobileCols: 12,
-    }));
-    return picked;
-  });
-
-  useEffect(() => {
-    const picked = shuffle(ARTICLES).slice(0, 5).map((article, i) => ({
-      ...article,
-      cols: i < 2 ? 6 : 4,
-      tabletCols: i < 2 ? 6 : 4,
-      mobileCols: 12,
-    }));
-    setDisplayedArticles(picked);
-  }, []);
+    }))
+  , []);
 
   const [testQuestionIndex, setTestQuestionIndex] = useState(0);
   const [testSelectedChoice, setTestSelectedChoice] = useState(null);

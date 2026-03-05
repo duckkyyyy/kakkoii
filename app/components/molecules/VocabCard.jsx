@@ -19,6 +19,7 @@ export default function VocabCard({
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+  const speechFallbackTimeoutRef = useRef(null);
 
   const getTextToSpeak = () => {
     const text = (kanji || reading || '').trim();
@@ -26,6 +27,10 @@ export default function VocabCard({
   };
 
   const stopSpeech = useCallback(() => {
+    if (speechFallbackTimeoutRef.current) {
+      clearTimeout(speechFallbackTimeoutRef.current);
+      speechFallbackTimeoutRef.current = null;
+    }
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.cancel();
     }
@@ -41,6 +46,10 @@ export default function VocabCard({
 
   useEffect(() => {
     return () => {
+      if (speechFallbackTimeoutRef.current) {
+        clearTimeout(speechFallbackTimeoutRef.current);
+        speechFallbackTimeoutRef.current = null;
+      }
       if (typeof window !== 'undefined' && window.speechSynthesis) {
         window.speechSynthesis.cancel();
       }
@@ -53,29 +62,8 @@ export default function VocabCard({
     };
   }, []);
 
-  const speakWithFallback = useCallback((textToSpeak) => {
+  const playGoogleTtsFallback = useCallback((textToSpeak) => {
     if (typeof window === 'undefined') return;
-
-    const synth = window.speechSynthesis;
-    const hasVoices = synth && synth.getVoices().length > 0;
-
-    if (hasVoices) {
-      synth.cancel();
-      const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      utterance.lang = 'ja-JP';
-      utterance.rate = 0.9;
-      const voices = synth.getVoices();
-      const ja = voices.find((v) => v.lang === 'ja-JP' || v.lang.startsWith('ja'));
-      if (ja) utterance.voice = ja;
-      else if (voices[0]) utterance.voice = voices[0];
-      utterance.onstart = () => setIsPlaying(true);
-      utterance.onend = () => setIsPlaying(false);
-      utterance.onerror = () => setIsPlaying(false);
-      synth.speak(utterance);
-      setIsPlaying(true);
-      return;
-    }
-
     const url = getTtsAudioUrl(textToSpeak);
     const audio = new Audio(url);
     audioRef.current = audio;
@@ -94,6 +82,57 @@ export default function VocabCard({
     });
   }, []);
 
+  const speakWithFallback = useCallback((textToSpeak) => {
+    if (typeof window === 'undefined') return;
+
+    const synth = window.speechSynthesis;
+    // В Chromium/Яндекс getVoices() часто пустой до voiceschanged; всё равно пробуем synth с lang
+    const useSynth = synth && typeof SpeechSynthesisUtterance !== 'undefined';
+
+    if (useSynth) {
+      synth.cancel();
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      utterance.lang = 'ja-JP';
+      utterance.rate = 0.9;
+      const voices = synth.getVoices();
+      if (voices.length > 0) {
+        const ja = voices.find((v) => v.lang === 'ja-JP' || (v.lang && v.lang.startsWith('ja')));
+        if (ja) utterance.voice = ja;
+        else utterance.voice = voices[0];
+      }
+      const cleanup = () => {
+        if (speechFallbackTimeoutRef.current) {
+          clearTimeout(speechFallbackTimeoutRef.current);
+          speechFallbackTimeoutRef.current = null;
+        }
+      };
+      utterance.onstart = () => {
+        cleanup();
+        setIsPlaying(true);
+      };
+      utterance.onend = () => {
+        cleanup();
+        setIsPlaying(false);
+      };
+      utterance.onerror = () => {
+        cleanup();
+        setIsPlaying(false);
+      };
+      synth.speak(utterance);
+      // Если в Яндексе/Chromium speak() не срабатывает, через 800ms переключаемся на Google TTS
+      speechFallbackTimeoutRef.current = setTimeout(() => {
+        speechFallbackTimeoutRef.current = null;
+        window.speechSynthesis.cancel();
+        setIsPlaying(false);
+        playGoogleTtsFallback(textToSpeak);
+      }, 800);
+      setIsPlaying(true);
+      return;
+    }
+
+    playGoogleTtsFallback(textToSpeak);
+  }, [playGoogleTtsFallback]);
+
   const handlePlayClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -106,25 +145,9 @@ export default function VocabCard({
       return;
     }
 
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      const synth = window.speechSynthesis;
-      if (synth.getVoices().length > 0) {
-        speakWithFallback(textToSpeak);
-        return;
-      }
-      const once = () => {
-        synth.removeEventListener('voiceschanged', once);
-        speakWithFallback(textToSpeak);
-      };
-      synth.addEventListener('voiceschanged', once);
-      synth.getVoices();
-      setTimeout(() => {
-        synth.removeEventListener('voiceschanged', once);
-        if (!isPlaying && textToSpeak) speakWithFallback(textToSpeak);
-      }, 350);
-    } else {
-      speakWithFallback(textToSpeak);
-    }
+    // Сразу вызываем озвучку: speakWithFallback сам попробует synth (даже при пустом getVoices())
+    // и при необходимости переключится на Google TTS (в т.ч. в Яндекс Браузере)
+    speakWithFallback(textToSpeak);
   };
 
   return (
