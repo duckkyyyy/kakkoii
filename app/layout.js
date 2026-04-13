@@ -2,6 +2,7 @@ import './globals.css'
 import AppShell from './components/AppShell'
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: 'KAKKOII',
   description: 'Описание проекта',
   icons: {

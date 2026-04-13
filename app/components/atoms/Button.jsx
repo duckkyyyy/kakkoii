@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import Link from 'next/link';
 
 export default function Button({
   children,
@@ -21,6 +22,19 @@ export default function Button({
   );
 
   if (href) {
+    const internal = typeof href === 'string' && href.startsWith('/') && !href.startsWith('//');
+    if (internal) {
+      return (
+        <Link
+          href={href}
+          className={combinedClasses}
+          aria-disabled={disabled}
+          onClick={disabled ? (e) => e.preventDefault() : undefined}
+        >
+          {children}
+        </Link>
+      );
+    }
     return (
       <a
         href={href}

@@ -1,0 +1,212 @@
+{
+  "slug": "ramen",
+  "type": "reading",
+  "title": "Прочти и пойми отзыв о рамене как японец",
+  "image": "/images/kai/kai-happy.png",
+  "cover": "/images/covers/ramen.jpg",
+  "backHref": "/",
+  "toc": [
+    {
+      "id": "intro",
+      "label": "Введение"
+    },
+    {
+      "id": "text",
+      "label": "Текст"
+    },
+    {
+      "id": "review",
+      "label": "Словарь"
+    },
+    {
+      "id": "test",
+      "label": "Проверка себя"
+    }
+  ],
+  "links": [
+    {
+      "href": "#",
+      "label": "Конспект"
+    }
+  ],
+  "introduction": "Научись читать настоящие отзывы из японских блогов о еде. Узнай, как хвалят идеальный бульон и ругают переваренную лапшу — и подмечай нужные слова прямо в тексте.",
+  "readingBlock": {
+    "id": "text",
+    "paragraphs": [
+      [
+        {
+          "type": "text",
+          "value": "この"
+        },
+        {
+          "type": "word",
+          "value": "ラーメン",
+          "translation": "рамен"
+        },
+        {
+          "type": "text",
+          "value": "は"
+        },
+        {
+          "type": "word",
+          "value": "味",
+          "translation": "вкус"
+        },
+        {
+          "type": "text",
+          "value": "が"
+        },
+        {
+          "type": "word",
+          "value": "濃い",
+          "translation": "густой"
+        },
+        {
+          "type": "text",
+          "value": "。"
+        },
+        {
+          "type": "word",
+          "value": "スープ",
+          "translation": "бульон"
+        },
+        {
+          "type": "text",
+          "value": "が熱くて、"
+        },
+        {
+          "type": "word",
+          "value": "麺",
+          "translation": "лапша"
+        },
+        {
+          "type": "text",
+          "value": "はちょうど良い"
+        },
+        {
+          "type": "word",
+          "value": "硬さ",
+          "translation": "жёсткость"
+        },
+        {
+          "type": "text",
+          "value": "だった。"
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "value": "次は"
+        },
+        {
+          "type": "word",
+          "value": "替え玉",
+          "translation": "добавка лапши"
+        },
+        {
+          "type": "text",
+          "value": "を頼もうと思う。"
+        },
+        {
+          "type": "word",
+          "value": "最高",
+          "translation": "лучше не бывает"
+        },
+        {
+          "type": "text",
+          "value": "！"
+        }
+      ]
+    ]
+  },
+  "vocabWords": [
+    {
+      "reading": "raamen",
+      "kanji": "ラーメン",
+      "translation": "рамен"
+    },
+    {
+      "reading": "aji",
+      "kanji": "味",
+      "translation": "вкус"
+    },
+    {
+      "reading": "koi",
+      "kanji": "濃い",
+      "translation": "густой"
+    },
+    {
+      "reading": "sūpu",
+      "kanji": "スープ",
+      "translation": "бульон"
+    },
+    {
+      "reading": "men",
+      "kanji": "麺",
+      "translation": "лапша"
+    },
+    {
+      "reading": "katasa",
+      "kanji": "硬さ",
+      "translation": "жёсткость"
+    },
+    {
+      "reading": "kaedama",
+      "kanji": "替え玉",
+      "translation": "добавка лапши"
+    },
+    {
+      "reading": "saikō",
+      "kanji": "最高",
+      "translation": "лучше не бывает"
+    }
+  ],
+  "test": {
+    "question": "В отзыве слово «濃い» описывает бульон. Что оно значит?",
+    "image": "/images/kai/kai-confused.png",
+    "choices": [
+      "Густой",
+      "Слабый",
+      "Солёный",
+      "Сладкий"
+    ]
+  },
+  "related": [
+    {
+      "slug": "ramen-menu",
+      "image": "/images/covers/ramen-menu.png",
+      "tags": [
+        "Чтение",
+        "Еда"
+      ],
+      "title": "Меню в японском ресторане",
+      "description": "Реальное меню раменной — разобрали каждую строчку."
+    },
+    {
+      "slug": "chasticy-wa-i-ga",
+      "image": "/images/covers/chasticy-wa-i-ga.png",
+      "tags": [
+        "Грамматика",
+        "Манга"
+      ],
+      "title": "Война миров: は vs が",
+      "description": "Когда は, а когда が? Разберём на примерах из аниме."
+    },
+    {
+      "slug": "jujutsu-first-page",
+      "image": "/images/covers/jujutsu-first-page.png",
+      "tags": [
+        "Чтение",
+        "Манга"
+      ],
+      "title": "Первая страница манги «Магическая битва»",
+      "description": "Первый разворот культовой манги — читай в оригинале."
+    }
+  ],
+  "tags": [
+    "Чтение",
+    "Еда"
+  ],
+  "description": "Научись читать настоящие отзывы из японских блогов о еде. Узнай, как хвалят идеальный бульон и ругают переваренную лапшу.",
+  "cols": 4
+}

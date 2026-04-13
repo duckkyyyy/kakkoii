@@ -780,6 +780,74 @@ h4 {
   flex-shrink: 0;
 }
 
+@media (min-width: 769px) {
+  .category-filter__mobile-summary {
+    display: none;
+  }
+
+  .category-filter__mobile-panel {
+    display: contents;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-filter__mobile-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    border: 3px solid var(--color-black);
+    background-color: #f7f7f7;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--color-black);
+    text-align: left;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .category-filter__mobile-summary-label {
+    min-width: 0;
+  }
+
+  .category-filter__mobile-caret {
+    flex-shrink: 0;
+    color: var(--color-black);
+    transition: transform 0.2s ease;
+  }
+
+  .category-filter__mobile-caret_open {
+    transform: rotate(180deg);
+  }
+
+  .category-filter__mobile-panel:not(.category-filter__mobile-panel_open) {
+    display: none;
+  }
+
+  .category-filter__mobile-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 18px 16px;
+    border: 3px solid var(--color-black);
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+  }
+
+  .category-filter__mobile-panel .category-filter__categories {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+    align-items: center;
+  }
+
+  .category-filter__mobile-panel .category-filter__category {
+    width: auto;
+  }
+}
+
 .article-card {
   display: block;
   min-width: 0;
@@ -3322,6 +3390,35 @@ body.footer-in-viewport .materials__sidebar {
     grid-column: span 1;
     position: static;
     order: -1;
+    border: none;
+    background: transparent;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    max-height: none;
+  }
+
+  .materials__filter.category-filter {
+    padding: 0;
+    gap: 8px;
+    border: none;
+    background: transparent;
+  }
+
+  .materials__filter .category-filter__mobile-panel .category-filter__category span.typo {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .materials__filter .category-filter__tags {
+    gap: 10px 16px;
+  }
+
+  .materials__filter .category-filter__tags .tag {
+    font-size: 15px;
+    font-weight: 500;
   }
 
   .materials__articles {

@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import Image from 'next/image';
+import Link from 'next/link';
 import Tag from '../atoms/Tag';
 import Typography from '../atoms/Typography';
 
@@ -22,6 +23,9 @@ export default function ArticleCard({
   const mdSpan = tabletCols != null ? `md-col-span-${tabletCols}` : '';
   const smSpan = mobileCols != null ? `sm-col-span-${mobileCols}` : '';
   const wrapperClasses = clsx(colSpan, mdSpan, smSpan, className);
+
+  const isInternalHref =
+    typeof href === 'string' && href.startsWith('/') && !href.startsWith('//');
 
   const content = (
     <>
@@ -67,6 +71,13 @@ export default function ArticleCard({
   );
 
   if (href) {
+    if (isInternalHref) {
+      return (
+        <Link href={href} className={clsx('article-card', wrapperClasses)}>
+          {content}
+        </Link>
+      );
+    }
     return (
       <a href={href} className={clsx('article-card', wrapperClasses)}>
         {content}

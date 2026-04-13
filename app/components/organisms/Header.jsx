@@ -102,13 +102,11 @@ export default function Header() {
                 <nav className="nav">
                   {menuItems.map((item) => {
                     const isActive = pathname === item.path || (item.path === '/daily-task' && typeof pathname === 'string' && pathname.startsWith('/daily-task'));
-                    const isDailyTaskCurrent = item.path === '/daily-task' && isActive;
                     return (
                       <Link
                         key={item.path}
                         href={item.path}
                         className={isActive ? 'header-link header-link-active' : 'header-link'}
-                        onClick={isDailyTaskCurrent ? (e) => { e.preventDefault(); window.location.href = '/daily-task'; } : undefined}
                       >
                         {item.name}
                       </Link>
@@ -143,13 +141,11 @@ export default function Header() {
                 <nav className="header-mobile-nav">
                   {menuItems.map((item) => {
                     const isActive = pathname === item.path || (item.path === '/daily-task' && typeof pathname === 'string' && pathname.startsWith('/daily-task'));
-                    const isDailyTaskCurrent = item.path === '/daily-task' && isActive;
                     return (
                       <Link
                         key={item.path}
                         href={item.path}
                         className={isActive ? 'header-link header-link-active' : 'header-link'}
-                        onClick={isDailyTaskCurrent ? (e) => { e.preventDefault(); window.location.href = '/daily-task'; } : undefined}
                       >
                         {item.name}
                       </Link>

@@ -1,0 +1,129 @@
+{
+  "slug": "magic-battle",
+  "type": "audition",
+  "title": "Пойми диалог из «Магической битвы»: Годжо vs. Сукуна",
+  "image": "/images/kai/kai-tired.png",
+  "cover": "/images/covers/magic-battle.jpg",
+  "backHref": "/",
+  "toc": [
+    {
+      "id": "intro",
+      "label": "Введение"
+    },
+    {
+      "id": "video",
+      "label": "Видео"
+    },
+    {
+      "id": "vocab",
+      "label": "Словарь"
+    },
+    {
+      "id": "test",
+      "label": "Проверка себя"
+    }
+  ],
+  "links": [
+    {
+      "href": "#",
+      "label": "Список слов"
+    }
+  ],
+  "introduction": "Разберём культовый диалог Годжо и Сукуны на японском. Сначала посмотри отрывок — потом разберём слова и грамматику.",
+  "videoPlaceholder": "/images/kai/kai-tired.png",
+  "vocabWords": [
+    {
+      "reading": "jogen",
+      "kanji": "呪言",
+      "translation": "проклятие, заклинание"
+    },
+    {
+      "reading": "saikyō",
+      "kanji": "最強",
+      "translation": "сильнейший"
+    },
+    {
+      "reading": "korosu",
+      "kanji": "殺す",
+      "translation": "убивать"
+    },
+    {
+      "reading": "omae",
+      "kanji": "お前",
+      "translation": "ты (грубо)"
+    },
+    {
+      "reading": "noroi",
+      "kanji": "呪い",
+      "translation": "проклятие"
+    },
+    {
+      "reading": "chikara",
+      "kanji": "力",
+      "translation": "сила"
+    },
+    {
+      "reading": "tatakau",
+      "kanji": "戦う",
+      "translation": "сражаться"
+    },
+    {
+      "reading": "makeru",
+      "kanji": "負ける",
+      "translation": "проигрывать"
+    },
+    {
+      "reading": "shinu",
+      "kanji": "死ぬ",
+      "translation": "умирать"
+    }
+  ],
+  "test": {
+    "question": "Что в диалоге подчёркивает отношение Годжо к Сукуне?",
+    "image": "/images/kai/kai-confused.png",
+    "choices": [
+      "Уважение к противнику",
+      "Презрение и уверенность в победе",
+      "Страх перед силой Сукуны",
+      "Желание договориться"
+    ]
+  },
+  "related": [
+    {
+      "slug": "10-slov-anime",
+      "image": "/images/covers/10-slov-anime-cover.png",
+      "tags": [
+        "Лексика",
+        "Аниме"
+      ],
+      "title": "10 слов из каждого аниме",
+      "description": "От «めっちゃ» до «マジで» — топ слов из аниме."
+    },
+    {
+      "slug": "ramen-menu",
+      "image": "/images/covers/ramen-menu.png",
+      "tags": [
+        "Чтение",
+        "Еда"
+      ],
+      "title": "Меню в японском ресторане",
+      "description": "Реальное меню раменной — разобрали каждую строчку."
+    },
+    {
+      "slug": "chasticy-wa-i-ga",
+      "image": "/images/covers/chasticy-wa-i-ga.png",
+      "tags": [
+        "Грамматика",
+        "Манга"
+      ],
+      "title": "Война миров: は vs が",
+      "description": "Когда は, а когда が? Разберём на примерах из аниме."
+    }
+  ],
+  "tags": [
+    "Аудирование",
+    "Магическая битва"
+  ],
+  "description": "Разберём культовый диалог на проклятом языке. Услышишь, как грамматика передаёт абсолютную силу и презрение.",
+  "cols": 6
+}
