@@ -7,11 +7,13 @@ import {
   ArticleBlock,
   ArticleReadingText,
   ArticleSidebar,
+  articleSidebarHasContent,
   ArticleCard,
   Grid,
   Button,
   TestChoiceInput,
   ArticleTest,
+  AuditionVideo,
   VocabCard,
   Play1,
   Telegram,
@@ -112,6 +114,12 @@ export default function ArticlePageClient({ article }) {
   const isGrammarTest = article.test?.type === 'grammar' && !hasGrammarDragTest;
   const isReading = article.type === 'reading';
   const isAudition = article.type === 'audition';
+  const articleSidebarVariant = isReading || isAudition ? 'links' : 'full';
+  const showArticleSidebar = articleSidebarHasContent({
+    variant: articleSidebarVariant,
+    tocItems: article.toc ?? [],
+    links: article.links ?? [],
+  });
   const isResultView = (hasGrammarDragTest && testMode === 'result') || (hasMultiQuestionTest && isTestResult);
   const resultScore = hasGrammarDragTest ? (grammarResults?.filter(Boolean).length ?? 0) : testScore;
   const resultTotal = hasGrammarDragTest ? grammarQuestions.length : questions.length;
@@ -160,23 +168,33 @@ export default function ArticlePageClient({ article }) {
             <>
               <div id="video" className={styles.videoBlock}>
                 <div className={styles.videoBlockInner}>
-                  <div className={styles.videoBlockImage}>
-                    <Image
-                      src={article.videoPlaceholder ?? article.cover ?? article.image}
-                      alt=""
-                      fill
-                      className={styles.videoBlockImg}
-                      sizes="(max-width: 1200px) 100vw, 1300px"
+                  {article.videoSrc ? (
+                    <AuditionVideo
+                      src={article.videoSrc}
+                      className={styles.videoNative}
+                      fallbackPoster={article.videoPoster ?? article.cover ?? article.image}
                     />
-                    <div className={styles.videoBlockOverlay} aria-hidden />
-                  </div>
-                  <button
-                    type="button"
-                    className={styles.videoBlockPlay}
-                    aria-label="Воспроизвести видео"
-                  >
-                    <Play1 size={140} color="var(--color-white)" strokeColor="var(--color-white)" />
-                  </button>
+                  ) : (
+                    <>
+                      <div className={styles.videoBlockImage}>
+                        <Image
+                          src={article.videoPlaceholder ?? article.cover ?? article.image}
+                          alt=""
+                          fill
+                          className={styles.videoBlockImg}
+                          sizes="(max-width: 1200px) 100vw, 1300px"
+                        />
+                        <div className={styles.videoBlockOverlay} aria-hidden />
+                      </div>
+                      <button
+                        type="button"
+                        className={styles.videoBlockPlay}
+                        aria-label="Воспроизвести видео"
+                      >
+                        <Play1 size={140} color="var(--color-white)" strokeColor="var(--color-white)" />
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
               {article.vocabWords?.length > 0 && (
@@ -281,13 +299,15 @@ export default function ArticlePageClient({ article }) {
           </div>
         </div>
 
-        <aside className={styles.sidebar}>
-          <ArticleSidebar
-            variant={isReading || isAudition ? 'links' : 'full'}
-            tocItems={article.toc}
-            links={article.links}
-          />
-        </aside>
+        {showArticleSidebar ? (
+          <aside className={styles.sidebar}>
+            <ArticleSidebar
+              variant={articleSidebarVariant}
+              tocItems={article.toc}
+              links={article.links}
+            />
+          </aside>
+        ) : null}
       </div>
 
       <section className={styles.testSection} id="test">

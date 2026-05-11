@@ -1,0 +1,102 @@
+{
+  "slug": "kimetsu-s2e1",
+  "type": "audition",
+  "title": "«Клинок, рассекающий демонов»: 2 сезон, 1 серия",
+  "image": "/images/covers/kimetsu-s2e1.png",
+  "cover": "/images/covers/kimetsu-s2e1.png",
+  "backHref": "/",
+  "toc": [
+    { "id": "intro", "label": "Введение" },
+    { "id": "video", "label": "Видео" },
+    { "id": "vocab", "label": "Словарь" },
+    { "id": "test", "label": "Проверка себя" }
+  ],
+  "links": [{ "href": "#vocab", "label": "Список слов" }],
+  "introduction": "Первая серия второго сезона: Рэнгоку за едой и разговор с хозяином заведения. Улови интонацию удовольствия от еды, вежливые заказы и тёплый тон — потом разберём слова и проверим, как ты понял диалог.",
+  "videoSrc": "/videos/kimetsu-s2e1/clip.mp4",
+  "videoPoster": "/images/covers/kimetsu-s2e1.png",
+  "videoPlaceholder": "/images/covers/kimetsu-s2e1.png",
+  "vocabWords": [
+    { "kanji": "うまい", "reading": "うまい", "translation": "вкусно, отлично (о еде)" },
+    { "kanji": "店主", "reading": "てんしゅ", "translation": "хозяин заведения" },
+    { "kanji": "同じ", "reading": "おなじ", "translation": "тот же самый, такой же" },
+    { "kanji": "注文", "reading": "ちゅうもん", "translation": "заказ" },
+    { "kanji": "邪魔", "reading": "じゃま", "translation": "помеха, мешать" },
+    { "kanji": "もちろん", "reading": "もちろん", "translation": "конечно, разумеется" },
+    { "kanji": "追加", "reading": "ついか", "translation": "добавка, дополнительный заказ" },
+    { "kanji": "はい", "reading": "はい", "translation": "да (вежливое согласие)" },
+    { "kanji": "ありがとう", "reading": "ありがとう", "translation": "спасибо" },
+    { "kanji": "ごちそうさま", "reading": "ごちそうさま", "translation": "спасибо за угощение (после еды)" }
+  ],
+  "test": {
+    "type": "choice",
+    "resultImage": "/images/test-questions/ramen-menu-result.png",
+    "questions": [
+      {
+        "question": "Какую эмоцию выражает первая реплика персонажа?",
+        "image": "/images/test-questions/ramen-menu-q1.png",
+        "choices": ["Грусть", "Удивление", "Удовольствие от еды", "Злость"],
+        "correctChoiceIndex": 2
+      },
+      {
+        "question": "Что просит сделать Рэнгоку у хозяина?",
+        "image": "/images/test-questions/ramen-menu-q3.png",
+        "choices": [
+          "Принести счёт",
+          "Подать ему то же блюдо, что и Рэнгоку",
+          "Убрать со стола",
+          "Позвать других гостей"
+        ],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Как Рэнгоку отвечает на вопрос «Я точно не помешаю?»",
+        "image": "/images/test-questions/blogger-weekend-q1.png",
+        "choices": [
+          "«Да, вы мешаете»",
+          "«Конечно нет! И мне тоже ещё порцию!»",
+          "«Пожалуйста, уйдите»",
+          "«Не уверен»"
+        ],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Какая общая атмосфера этого диалога?",
+        "image": "/images/test-questions/weather-forecast-q1.png",
+        "choices": [
+          "Напряжённая и враждебная",
+          "Тёплая и дружелюбная, застолье",
+          "Трагическая и печальная",
+          "Таинственная и загадочная"
+        ],
+        "correctChoiceIndex": 1
+      }
+    ]
+  },
+  "related": [
+    {
+      "slug": "ramen-menu",
+      "image": "/images/covers/ramen-menu.png",
+      "tags": ["Чтение", "Еда"],
+      "title": "Меню в японском ресторане",
+      "description": "Реальное меню раменной — разобрали каждую строчку."
+    },
+    {
+      "slug": "ramen",
+      "image": "/images/covers/ramen.jpg",
+      "tags": ["Чтение", "Еда"],
+      "title": "Прочти и пойми отзыв о рамене как японец",
+      "description": "Настоящий отзыв из блога — лексика про еду и вкус."
+    },
+    {
+      "slug": "magic-battle-s3e1",
+      "image": "/images/covers/magic-battle-s3e1.png",
+      "tags": ["Аудирование", "Магическая битва"],
+      "title": "«Магическая битва»: 3 сезон, 1 серия",
+      "description": "Диалог в клане Зэнин — слушаем и проверяем понимание."
+    }
+  ],
+  "tags": ["Аудирование", "Клинок, рассекающий демонов"],
+  "description": "Сцена в поезде: Рэнгоку, еда и разговор с хозяином. Лексика заказа и вежливости — слушаем и отвечаем на вопросы.",
+  "cols": 6
+}

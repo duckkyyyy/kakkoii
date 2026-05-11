@@ -13,10 +13,11 @@ export { default as ArticleCard } from './molecules/ArticleCard';
 export { default as ArticleCover } from './molecules/ArticleCover';
 export { default as ArticleBlock } from './molecules/ArticleBlock';
 export { default as ArticleReadingText } from './molecules/ArticleReadingText';
-export { default as ArticleSidebar } from './molecules/ArticleSidebar';
+export { default as ArticleSidebar, articleSidebarHasContent } from './molecules/ArticleSidebar';
 export { default as VocabCard } from './molecules/VocabCard';
 export { default as TestQuestion } from './molecules/TestQuestion';
 export { default as ArticleTest } from './molecules/ArticleTest';
+export { default as AuditionVideo } from './molecules/AuditionVideo';
 export { default as KanjiCard } from './molecules/KanjiCard';
 
 export { default as Section } from './organisms/Section';

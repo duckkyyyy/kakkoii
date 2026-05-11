@@ -1,0 +1,107 @@
+{
+  "slug": "magic-battle-s3e1",
+  "type": "audition",
+  "title": "«Магическая битва»: 3 сезон, 1 серия",
+  "image": "/images/covers/magic-battle-s3e1.png",
+  "cover": "/images/covers/magic-battle-s3e1.png",
+  "backHref": "/",
+  "toc": [
+    { "id": "intro", "label": "Введение" },
+    { "id": "video", "label": "Видео" },
+    { "id": "vocab", "label": "Словарь" },
+    { "id": "test", "label": "Проверка себя" }
+  ],
+  "links": [{ "href": "#vocab", "label": "Список слов" }],
+  "introduction": "Послушай отрывок из первой серии третьего сезона: диалог Наои Зэнина с женщиной из клана Зэнин. Обрати внимание на лексику про наследование, смерть и «место» женщины в его картине мира — потом закрепим слова и проверим понимание диалога.",
+  "videoSrc": "/videos/magic-battle-s3e1/clip.mp4",
+  "videoPoster": "/images/covers/magic-battle-s3e1.png",
+  "videoPlaceholder": "/images/covers/magic-battle-s3e1.png",
+  "vocabWords": [
+    { "kanji": "死ぬ", "reading": "しぬ", "translation": "умирать, погибать" },
+    { "kanji": "継ぐ", "reading": "つぐ", "translation": "наследовать (клан, традиции)" },
+    { "kanji": "一族", "reading": "いちぞく", "translation": "клан, род, семья" },
+    { "kanji": "死に際", "reading": "しにぎわ", "translation": "момент смерти, при смерти" },
+    { "kanji": "女", "reading": "おんな", "translation": "женщина" },
+    { "kanji": "前に出る", "reading": "まえにでる", "translation": "выходить вперёд, лезть на передний план" },
+    { "kanji": "値する", "reading": "あたいする", "translation": "заслуживать, быть достойным" },
+    { "kanji": "刀", "reading": "かたな", "translation": "меч, катана" },
+    { "kanji": "背中", "reading": "せなか", "translation": "спина" },
+    { "kanji": "分別", "reading": "ふんべつ", "translation": "разум, рассудительность" }
+  ],
+  "test": {
+    "type": "choice",
+    "resultImage": "/images/test-questions/jujutsu-first-page-result.png",
+    "questions": [
+      {
+        "question": "Что говорит Наоя о ситуации с Май?",
+        "image": "/images/test-questions/wa-ga-q1.png",
+        "choices": [
+          "«Маки уже мертва»",
+          "«Май умерла»",
+          "«Маки унаследует клан»",
+          "«Маки сбежала»"
+        ],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Согласно диалогу, какая женщина достойна ножа в спину?",
+        "image": "/images/test-questions/ramen-menu-q2.png",
+        "choices": [
+          "Та, которая слабая",
+          "Та, которая лезет на передний план",
+          "Та, которая предала клан",
+          "Та, которая боится смерти"
+        ],
+        "correctChoiceIndex": 1
+      },
+      {
+        "question": "Чему, по мнению Наои, стоило бы поучиться у Май?",
+        "image": "/images/test-questions/rugatelstva-anime-q3.png",
+        "choices": [
+          "Силе и магии",
+          "Верности клану",
+          "Уму-разуму",
+          "Храбрости"
+        ],
+        "correctChoiceIndex": 2
+      },
+      {
+        "question": "Какая главная тема этого диалога?",
+        "image": "/images/test-questions/10-slov-q4.png",
+        "choices": [
+          "Битва с проклятиями",
+          "Наследование клана",
+          "Обсуждение силы Годжо",
+          "Планы нападения на школу"
+        ],
+        "correctChoiceIndex": 1
+      }
+    ]
+  },
+  "related": [
+    {
+      "slug": "magic-battle",
+      "image": "/images/covers/magic-battle.jpg",
+      "tags": ["Аудирование", "Магическая битва"],
+      "title": "Пойми диалог из «Магической битвы»: Годжо vs. Сукуна",
+      "description": "Культовый диалог на японском — лексика и грамматика силы."
+    },
+    {
+      "slug": "jujutsu-first-page",
+      "image": "/images/covers/jujutsu-first-page.png",
+      "tags": ["Чтение", "Манга"],
+      "title": "Первая страница манги «Магическая битва»",
+      "description": "Первый разворот в оригинале — от фразы про учителя до ответа Мегуми."
+    },
+    {
+      "slug": "rugatelstva-anime",
+      "image": "/images/covers/rugatelstva-anime.png",
+      "tags": ["Лексика", "Аниме"],
+      "title": "Как ругаются в японских аниме",
+      "description": "バカ, くそ, この野郎 — разбираем эмоции и ярость в речи."
+    }
+  ],
+  "tags": ["Аудирование", "Магическая битва"],
+  "description": "Первая серия 3 сезона: Наоя и женщины клана Зэнин — разговор о наследовании, Май и Маки. Слушаем отрывок и проверяем понимание.",
+  "cols": 6
+}

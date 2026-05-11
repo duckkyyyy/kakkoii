@@ -500,6 +500,7 @@ h4 {
   cursor: pointer;
   text-align: center;
   border: 2px solid transparent;
+  text-decoration: none;
 }
 
 .btn-big {
