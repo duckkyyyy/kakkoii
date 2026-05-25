@@ -19,6 +19,9 @@ import {
   Telegram,
   Vkontakte,
 } from '../../components';
+import ArticleTestResult from './ArticleTestResult';
+import ArticleTestChoiceStep from './ArticleTestChoiceStep';
+import ArticleGrammarQuestion from './ArticleGrammarQuestion';
 import styles from './page.module.css';
 
 const testQuestions = (test) => test?.questions && Array.isArray(test.questions) && test.questions.length > 0;
@@ -288,7 +291,7 @@ export default function ArticlePageClient({ article }) {
               <Telegram size={64} />
             </a>
             <a
-              href={shareUrl ? `https://vk.com/share.php?url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(article?.title ?? '')}` : '#'}
+              href={shareUrl ? `https://vk.com/share.php?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(article?.title ?? '')}` : '#'}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.shareIcon}
@@ -313,109 +316,20 @@ export default function ArticlePageClient({ article }) {
       <section className={styles.testSection} id="test">
         <div className={styles.testInner}>
           {isResultView ? (
-              <div className={styles.testResultWrap}>
-                <div className={styles.testResultLeft}>
-                  <p className={styles.testResultTitle}>Результат — {resultScore} из {resultTotal}</p>
-                  <div className={styles.testResultCover}>
-                    <Image
-                      src={article.test?.resultImage ?? article.cover ?? article.image}
-                      alt=""
-                      fill
-                      className={styles.testResultCoverImg}
-                      sizes="622px"
-                      unoptimized={String(article.test?.resultImage ?? article.cover ?? article.image ?? '').includes('/kai/')}
-                    />
-                  </div>
-                </div>
-                <div className={styles.testResultRight}>
-                  <div className={styles.testResultCard}>
-                    <p className={styles.testResultMain}>
-                      {resultScore === resultTotal
-                        ? (hasGrammarDragTest
-                            ? (article.slug === 'te-forma'
-                                ? 'やばい! Все предложения с て-формой собраны верно. Теперь можешь соединять действия и вежливо просить!'
-                                : article.slug === 'tai-hoshii'
-                                  ? 'やばい! Все желания собраны верно. たい, ほしい и てほしい — теперь твои!'
-                                  : article.slug === 'sugiru'
-                                    ? 'やばい! Все «слишком» собраны верно. すぎる — теперь твой!'
-                                    : 'やばい! Все предложения собраны верно. は и が больше не путаются!')
-                            : isReading
-                              ? 'やばい! Все вопросы по меню покорены. Теперь в раменной не промахнёшься!'
-                              : 'やばい! Ты покорил весь сленг без единой ошибки. Настоящий мастер!')
-                        : resultScore >= resultTotal / 2
-                          ? (hasGrammarDragTest
-                              ? (article.slug === 'te-forma'
-                                  ? 'Хорошо! Пару конструкций с て стоит повторить — ты уже на верном пути.'
-                                  : article.slug === 'tai-hoshii'
-                                    ? 'Хорошо! Пару конструкций желаний стоит повторить — ты уже на верном пути.'
-                                    : article.slug === 'sugiru'
-                                      ? 'Хорошо! Пару конструкций с すぎる стоит повторить — ты уже на верном пути.'
-                                      : 'Хорошо! Пару конструкций стоит повторить — ты уже на верном пути.')
-                              : isReading
-                                ? 'Хорошо! Пару вопросов по тексту стоит повторить — ты уже на верном пути.'
-                                : 'Хорошо! Пару слов стоит повторить — ты уже на верном пути.')
-                          : 'Не сдавайся! Перечитай статью и попробуй ещё раз. 頑張って!'}
-                    </p>
-                    <p className={styles.testResultSub}>
-                      {resultScore === resultTotal
-                        ? (hasGrammarDragTest
-                            ? (article.slug === 'te-forma'
-                                ? 'С て-формой ты сможешь просить 待ってください, говорить 見ている и связывать действия. Ключ к половине японской речи — твой!'
-                                : article.slug === 'tai-hoshii'
-                                  ? 'Теперь сможешь говорить 食べたい, ほしい и てほしい — о своих желаниях и о том, чего хочешь от других.'
-                                  : article.slug === 'sugiru'
-                                    ? 'Теперь сможешь жаловаться по-японски: 辛すぎる, 食べすぎた, 高すぎて買えない. やばすぎ!'
-                                    : 'Теперь в аниме будешь слышать, кто тема, а кто в фокусе. は и が — твои.')
-                            : isReading
-                              ? 'Теперь в японской раменной сможешь уверенно заказать 醤油 или 味噌 и не перепутать 大盛り с 替玉. いただきます！'
-                              : 'Теперь ты можешь спокойно смотреть аниме, понимая эмоции своих любимых героев. めっちゃかっこいい！')
-                        : resultScore >= resultTotal / 2
-                          ? (hasGrammarDragTest
-                              ? (article.slug === 'te-forma'
-                                  ? 'Ещё немного практики — и て-форма станет твоим главным комбо.'
-                                  : article.slug === 'tai-hoshii'
-                                    ? 'Ещё немного практики — и たい, ほしい, てほしい станут твоими.'
-                                    : article.slug === 'sugiru'
-                                      ? 'Ещё немного практики — и すぎる станет твоим.'
-                                      : 'Ещё немного практики — и частицы станут твоими.')
-                              : isReading
-                                ? 'Ещё раз загляни в словарь и в текст — и меню будет как родное.'
-                                : 'Ещё немного практики — и эти слова станут твоими.')
-                          : (hasGrammarDragTest
-                              ? (article.slug === 'te-forma'
-                                  ? 'Каждый пример из статьи приближает к чувству て-формы: просьба, процесс, цепочка действий.'
-                                  : article.slug === 'tai-hoshii'
-                                    ? 'Каждый пример из статьи приближает к чувству たい, ほしい и てほしい — свои желания и желания от других.'
-                                    : article.slug === 'sugiru'
-                                      ? 'Каждый пример из статьи приближает к чувству すぎる — когда всего слишком много.'
-                                      : 'Каждый пример из статьи приближает к чувству は и が.')
-                              : isReading
-                                ? 'Перечитай меню и словарь — и в следующий раз все ответы будут твоими.'
-                                : 'Каждый раз, когда услышишь слово из статьи в аниме, оно запомнится лучше.')}
-                    </p>
-                  </div>
-                  <div className={styles.testResultActions}>
-                    <Button variant="secondary" size="big" className={styles.testResultBtn} onClick={handleTestRestart}>
-                      Пройти заново
-                    </Button>
-                    <Button variant="main" size="big" className={styles.testResultBtn} onClick={handleViewAnswers}>
-                      Смотреть ответы
-                    </Button>
-                  </div>
-                </div>
-              </div>
+            <ArticleTestResult
+              article={article}
+              resultScore={resultScore}
+              resultTotal={resultTotal}
+              onRestart={handleTestRestart}
+              onViewAnswers={handleViewAnswers}
+            />
           ) : hasGrammarDragTest && currentGrammarQuestion ? (
-            <div key={grammarResults.length} className={styles.testGrammarFullWidth}>
-              <ArticleTest
-                type="grammar"
-                instruction={article.test.instruction}
-                sentence={currentGrammarQuestion.sentence}
-                image={currentGrammarQuestion.image}
-                correctWords={currentGrammarQuestion.correctWords}
-                distractors={currentGrammarQuestion.distractors}
-                onNext={handleGrammarNext}
-              />
-            </div>
+            <ArticleGrammarQuestion
+              key={grammarResults.length}
+              instruction={article.test.instruction}
+              question={currentGrammarQuestion}
+              onNext={handleGrammarNext}
+            />
           ) : isGrammarTest ? (
             <ArticleTest
               type="grammar"
@@ -427,67 +341,36 @@ export default function ArticlePageClient({ article }) {
             />
           ) : hasMultiQuestionTest ? (
             isTestReview ? (
-              <div className={styles.testChoiceWrap}>
-                <div className={styles.testChoiceLayout}>
-                  <div className={styles.testChoiceLeft}>
-                    <ArticleTest
-                      type="default"
-                      question={currentQuestion?.question}
-                      image={currentQuestion?.image}
-                    />
-                  </div>
-                  <div className={styles.testChoiceRight}>
-                    {(currentQuestion?.choices ?? []).map((choice, choiceIndex) => (
-                      <TestChoiceInput
-                        key={`${testQuestionIndex}-${choiceIndex}`}
-                        state={getArticleTestChoiceState(currentQuestion, choiceIndex)}
-                        onClick={() => {}}
-                        disabled
-                      >
-                        {choice}
-                      </TestChoiceInput>
-                    ))}
-                    <Button
-                      variant="main"
-                      size="big"
-                      onClick={handleReviewNext}
-                    >
-                      {testQuestionIndex < questions.length - 1 ? 'Далее' : 'К результату'}
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              <ArticleTestChoiceStep
+                question={currentQuestion}
+                choices={currentQuestion?.choices ?? []}
+                choiceStateForIndex={(choiceIndex) =>
+                  getArticleTestChoiceState(currentQuestion, choiceIndex)
+                }
+                onNext={handleReviewNext}
+                nextLabel={
+                  testQuestionIndex < questions.length - 1 ? 'Далее' : 'К результату'
+                }
+                choicesDisabled
+              />
             ) : (
-              <div className={styles.testChoiceWrap}>
-                <div className={styles.testChoiceLayout}>
-                  <div className={styles.testChoiceLeft}>
-                    <ArticleTest
-                      type="default"
-                      question={currentQuestion?.question}
-                      image={currentQuestion?.image}
-                    />
-                  </div>
-                  <div className={styles.testChoiceRight}>
-                    {(currentQuestion?.choices ?? []).map((choice, choiceIndex) => (
-                      <TestChoiceInput
-                        key={`${testQuestionIndex}-${choiceIndex}`}
-                        state={testAnswers[testQuestionIndex] === choiceIndex ? 'selected' : 'default'}
-                        onClick={() => handleTestChoice(testQuestionIndex, choiceIndex)}
-                      >
-                        {choice}
-                      </TestChoiceInput>
-                    ))}
-                    <Button
-                      variant="main"
-                      size="big"
-                      disabled={!canProceed}
-                      onClick={handleTestNext}
-                    >
-                      {testQuestionIndex < questions.length - 1 ? 'Далее' : 'Показать результат'}
-                    </Button>
-                  </div>
-                </div>
-              </div>
+              <ArticleTestChoiceStep
+                question={currentQuestion}
+                choices={currentQuestion?.choices ?? []}
+                choiceStateForIndex={(choiceIndex) =>
+                  testAnswers[testQuestionIndex] === choiceIndex ? 'selected' : 'default'
+                }
+                onChoiceClick={(choiceIndex) =>
+                  handleTestChoice(testQuestionIndex, choiceIndex)
+                }
+                onNext={handleTestNext}
+                nextLabel={
+                  testQuestionIndex < questions.length - 1
+                    ? 'Далее'
+                    : 'Показать результат'
+                }
+                nextDisabled={!canProceed}
+              />
             )
           ) : (
             <>
@@ -516,7 +399,7 @@ export default function ArticlePageClient({ article }) {
       </section>
 
       <section className={styles.related}>
-        <Grid>
+        <Grid cols={12} gap="20px">
           {(article.related ?? []).map((item) => (
             <ArticleCard
               key={item.slug}

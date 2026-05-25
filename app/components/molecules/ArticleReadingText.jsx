@@ -13,6 +13,7 @@ export default function ArticleReadingText({ segments, className, variant = '32-
             <span
               key={i}
               className="article-reading-text__word"
+              lang="ja"
               data-translation={seg.translation}
               tabIndex={0}
               role="button"
@@ -25,7 +26,11 @@ export default function ArticleReadingText({ segments, className, variant = '32-
             </span>
           );
         }
-        return <span key={i}>{seg.value}</span>;
+        return (
+          <span key={i} lang="ja">
+            {seg.value}
+          </span>
+        );
       })}
     </p>
   );

@@ -46,7 +46,9 @@ export default function GrammarTag({
           )}
         </span>
       )}
-      <span className="grammar-tag__text">{children}</span>
+      <span className="grammar-tag__text" lang="ja">
+        {children}
+      </span>
       {(showCheckmark || showCross) && state === 'unselectedCorrect' && (
         <span className="grammar-tag__icon" aria-hidden>
           <Checkmark size={20} color="var(--color-black)" />

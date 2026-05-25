@@ -12,13 +12,15 @@ export default function KanjiCard({
 }) {
   return (
     <div className={clsx('kanji-card', className)}>
-      <div className="kanji-card__kanji">{kanji}</div>
+      <div className="kanji-card__kanji" lang="ja">
+        {kanji}
+      </div>
       <div className="kanji-card__info">
         <Typography variant="28-semi" className="kanji-card__meaning">
           {meaning}
         </Typography>
         {reading && (
-          <Typography variant="24-medium" className="kanji-card__reading">
+          <Typography variant="24-medium" className="kanji-card__reading" lang="ja">
             {reading}
           </Typography>
         )}

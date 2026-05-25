@@ -18,29 +18,29 @@ const TEST_QUESTIONS = [
     id: 2,
     text: 'Что значит バカ (baka) в японском?',
     image: '/images/covers/rugatelstva-anime.png',
-    choices: ['Дурак, идиот', 'Спасибо', 'Доброе утро'],
-    correctIndex: 0,
+    choices: ['Спасибо', 'Дурак, идиот', 'Доброе утро'],
+    correctIndex: 1,
   },
   {
     id: 3,
     text: 'На картинке — меню. Что обычно означает ラーメン?',
     image: '/images/covers/ramen-menu.png',
-    choices: ['Рамен, лапша', 'Суши', 'Десерт'],
-    correctIndex: 0,
+    choices: ['Суши', 'Десерт', 'Рамен, лапша'],
+    correctIndex: 2,
   },
   {
     id: 4,
     text: 'Как по-японски «слишком жарко» с грамматикой 〜すぎる?',
     image: '/images/covers/sugiru.png',
-    choices: ['暑すぎる (atsusugiru)', '寒すぎる (samusugiru)', '涼しすぎる (suzushisugiru)'],
-    correctIndex: 0,
+    choices: ['寒すぎる (samusugiru)', '暑すぎる (atsusugiru)', '涼しすぎる (suzushisugiru)'],
+    correctIndex: 1,
   },
   {
     id: 5,
     text: 'て-форма глагола нужна, чтобы:',
     image: '/images/covers/te-forma.png',
-    choices: ['Соединять действия и просить', 'Только для прошедшего времени', 'Только в вежливой речи'],
-    correctIndex: 0,
+    choices: ['Только для прошедшего времени', 'Соединять действия и просить', 'Только в вежливой речи'],
+    correctIndex: 1,
   },
 ];
 
@@ -109,8 +109,12 @@ export default function HomePageClient({ displayedArticles }) {
                 <Image src={KAI_PEEK} alt="" width={109} height={135} unoptimized />
               </div>
               <div className={styles.card__info}>
-                <span className={styles.card__reading}>kuchipaku</span>
-                <span className={styles.card__kanji}>口パク</span>
+                <span className={styles.card__reading} lang="ja">
+                  kuchipaku
+                </span>
+                <span className={styles.card__kanji} lang="ja">
+                  口パク
+                </span>
                 <span className={styles.card__translation}>Липсинг</span>
               </div>
             </div>
@@ -151,7 +155,7 @@ export default function HomePageClient({ displayedArticles }) {
           {/* Reading card */}
           <div className={`${styles.card} ${styles.card_reading}`}>
             <Tag size="small" variant="default" className={styles.card__tag}>Чтение</Tag>
-            <p className={styles.card__text}>
+            <p className={styles.card__text} lang="ja">
               大阪の賑やかな裏通りには、立ち飲み屋があります。立ち飲み屋は、地元の人々にとって特別な場所です。ある日、大阪に住むケンジは友達を連れて、彼のお気に入りの立ち飲み屋に行きました。
             </p>
             <Link href="/article/ramen-menu" className={styles.card__btn}>Читать</Link>
@@ -223,7 +227,9 @@ export default function HomePageClient({ displayedArticles }) {
                 Ты набрал {testScore} из {TEST_QUESTIONS.length}
               </p>
               <p className={styles.test__resultTitle}>{resultItem.title}</p>
-              <p className={styles.test__resultText}>{resultItem.text}</p>
+              <p className={styles.test__resultText} lang={resultItem.text?.match(/[\u3040-\u30FF\u4E00-\u9FFF]/) ? 'ja' : undefined}>
+                {resultItem.text}
+              </p>
               <Button variant="main" size="big" onClick={handleTestNext}>
                 Пройти ещё раз
               </Button>

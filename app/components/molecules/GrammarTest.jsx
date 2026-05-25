@@ -33,15 +33,10 @@ export default function GrammarTest({
   onNext,
 }) {
   const isEmbedded = variant === 'embedded';
-  const [allWords, setAllWords] = useState(() => [
-    ...correctWords,
-    ...distractors,
-  ]);
+  const [allWords] = useState(() =>
+    shuffleArray([...correctWords, ...distractors])
+  );
   const [slots, setSlots] = useState(() => correctWords.map(() => null));
-
-  useEffect(() => {
-    setAllWords(shuffleArray([...correctWords, ...distractors]));
-  }, []);
   const [checked, setChecked] = useState(false);
   const [results, setResults] = useState(null);
   const [draggedWord, setDraggedWord] = useState(null);

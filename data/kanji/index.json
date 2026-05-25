@@ -1,8 +1,8 @@
 [
   {
     "character": "日",
-    "meaning": "День, солнце; счётчик для дней",
-    "reading": "nichi, jitsu / hi, -bi, -ka"
+    "meaning": "День, солнце",
+    "reading": "nichi, jitsu"
   },
   {
     "character": "一",
@@ -23,5 +23,40 @@
     "character": "年",
     "meaning": "Год",
     "reading": "nen, toshi"
+  },
+  {
+    "character": "大",
+    "meaning": "Большой, огромный",
+    "reading": "dai, oo(ki)"
+  },
+  {
+    "character": "十",
+    "meaning": "Десять",
+    "reading": "juu, tou"
+  },
+  {
+    "character": "二",
+    "meaning": "Два",
+    "reading": "ni, futa(tsu)"
+  },
+  {
+    "character": "本",
+    "meaning": "Книга, настоящее",
+    "reading": "hon, moto"
+  },
+  {
+    "character": "中",
+    "meaning": "Внутри, центр",
+    "reading": "chuu, naka"
+  },
+  {
+    "character": "長",
+    "meaning": "Длинный, лидер",
+    "reading": "chou, naga(i)"
+  },
+  {
+    "character": "出",
+    "meaning": "Выходить, покидать",
+    "reading": "shutsu, de(ru)"
   }
 ]

@@ -1,8 +1,8 @@
 const variantToClass = {
-  'h1': 'typo typo-h1',
-  'h2': 'typo typo-h2',
-  'h3': 'typo typo-h3',
-  'h4': 'typo typo-h4',
+  h1: 'typo typo-h1',
+  h2: 'typo typo-h2',
+  h3: 'typo typo-h3',
+  h4: 'typo typo-h4',
   '32-semi': 'typo typo-32-semi',
   '32-medium': 'typo typo-32-medium',
   '28-semi': 'typo typo-28-semi',
@@ -17,15 +17,26 @@ const variantToClass = {
   '16-regular': 'typo typo-16-regular',
 };
 
-export default function Typography({ 
-  children, 
-  className = '', 
-  variant = '16-regular' 
+const variantToDefaultTag = {
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+};
+
+export default function Typography({
+  children,
+  className = '',
+  variant = '16-regular',
+  as,
+  lang,
 }) {
   const variantClass = variantToClass[variant] || variantToClass['16-regular'];
+  const Tag = as ?? variantToDefaultTag[variant] ?? 'p';
+
   return (
-    <div className={`${variantClass} ${className}`.trim()}>
+    <Tag className={`${variantClass} ${className}`.trim()} lang={lang}>
       {children}
-    </div>
+    </Tag>
   );
 }

@@ -1,17 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
-import {
-  Button,
-  TestQuestion,
-  TestChoiceInput,
-  Footer,
-} from '../components';
 import KanjiStrokeField from '../components/molecules/KanjiStrokeField';
-import GrammarTest from '../components/molecules/GrammarTest';
+import { Button, TestQuestion } from '../components';
+import DailyTaskResult from './DailyTaskResult';
+import DailyTaskChoiceStep from './DailyTaskChoiceStep';
+import DailyTaskGrammarQuestion from './DailyTaskGrammarQuestion';
 
-const KAI_SLEEPY = '/images/kai/kai-sleepy.png';
 const DAILY_TASK_KANJI = '日';
 
 const DAILY_TASK_QUESTIONS = [
@@ -170,162 +165,42 @@ export default function DailyTaskPage() {
     return 'default';
   };
 
-  const renderChoices = (question) => {
-    const selectedIndex = selectedChoices[currentIndex];
-    const showResults = isReview;
-    return (
-      <div className="kanji-test-page__choices">
-        {question.choices.map((choice, index) => {
-          const state = showResults
-            ? getChoiceState(question, index)
-            : selectedIndex === index
-              ? 'selected'
-              : 'default';
-          return (
-            <TestChoiceInput
-              key={index}
-              state={state}
-              onClick={() => !showResults && handleChoiceSelect(index)}
-              disabled={showResults}
-            >
-              {choice}
-            </TestChoiceInput>
-          );
-        })}
-      </div>
-    );
+  const getNextLabel = () => {
+    if (isLastQuestion) {
+      return isReview ? 'К результату' : 'Завершить тест';
+    }
+    return 'Далее';
   };
 
   const renderQuestionContent = () => {
     if (mode === 'result') {
-      const correctTotal = score ?? 0;
       return (
-        <div className="kanji-test-page__result">
-          <div className="kanji-test-page__result-content">
-            <div className="kanji-test-page__result-title-bar">
-              <p className="kanji-test-page__result-title-text">
-                результат — {correctTotal} из {totalQuestions}
-              </p>
-            </div>
-            <div className="kanji-test-page__result-descr">
-              <div className="kanji-test-page__result-kai">
-                <Image
-                  src={KAI_SLEEPY}
-                  alt=""
-                  width={332}
-                  height={332}
-                  className="kanji-test-page__result-kai-img"
-                  unoptimized
-                />
-              </div>
-              <div className="kanji-test-page__result-text">
-                <p className="kanji-test-page__result-text-main">
-                  Хороший старт! Кай одобрительно кивает. Ты сделал важное дело — уделил время языку сегодня. Завтра будет ещё лучше!
-                </p>
-                <p className="kanji-test-page__result-text-tip">
-                  Сегодня стоит обратить внимание на кандзи. Попробуй заглянуть в нашу статью по этой теме!
-                </p>
-              </div>
-            </div>
-            <div className="kanji-test-page__result-actions">
-              <Button
-                variant="secondary"
-                size="big"
-                onClick={() => {}}
-                className="kanji-test-page__result-btn"
-              >
-                Поделиться результатом
-              </Button>
-              <Button
-                variant="secondary"
-                size="big"
-                onClick={handleViewAnswers}
-                className="kanji-test-page__result-btn kanji-test-page__result-btn--flex"
-              >
-                Смотреть ответы
-              </Button>
-              <Button
-                variant="main"
-                size="big"
-                href="/"
-                className="kanji-test-page__result-btn kanji-test-page__result-btn--flex"
-              >
-                На главную
-              </Button>
-            </div>
-          </div>
-          <div className="kanji-test-page__result-footer">
-            <Footer />
-          </div>
-        </div>
+        <DailyTaskResult
+          score={score ?? 0}
+          totalQuestions={totalQuestions}
+          onViewAnswers={handleViewAnswers}
+        />
       );
     }
 
     if (currentQuestion.type === 'grammar') {
-      if (isReview && grammarAnswer) {
-        const correctWords = currentQuestion.correctWords || [];
-        const isCorrect =
-          grammarAnswer.length === correctWords.length &&
-          grammarAnswer.every((w, i) => w === correctWords[i]);
-        return (
-          <div className="kanji-test-page__choice">
-            <div className="kanji-test-page__choice-layout">
-              <div className="kanji-test-page__choice-left">
-                <TestQuestion
-                  questionNumber={currentIndex + 1}
-                  totalQuestions={totalQuestions}
-                  title={currentQuestion.title}
-                />
-              </div>
-              <div className="kanji-test-page__choice-right">
-                <div className="kanji-test-page__choices">
-                  <p className="daily-task-grammar-review">
-                    Ваш ответ: {grammarAnswer.join(' ')}.{' '}
-                    {isCorrect ? 'Правильно.' : `Правильный порядок: ${correctWords.join(' ')}.`}
-                  </p>
-                </div>
-                <Button
-                  variant="main"
-                  size="big"
-                  onClick={handleNext}
-                  className="kanji-test-page__next-btn"
-                >
-                  {isLastQuestion ? 'К результату' : 'Далее'}
-                </Button>
-              </div>
-            </div>
-          </div>
-        );
-      }
       return (
-        <div className="kanji-test-page__choice kanji-test-page__choice--grammar">
-          <div className="kanji-test-page__choice-layout">
-            <div className="kanji-test-page__choice-left">
-              <TestQuestion
-                questionNumber={currentIndex + 1}
-                totalQuestions={totalQuestions}
-                title={currentQuestion.title}
-              />
-            </div>
-            <div className="kanji-test-page__choice-right">
-              <GrammarTest
-                correctWords={currentQuestion.correctWords}
-                distractors={currentQuestion.distractors}
-                variant="embedded"
-                onSlotsChange={setGrammarSlots}
-              />
-              <Button
-                variant="main"
-                size="big"
-                onClick={handleNext}
-                disabled={!canGoNext}
-                className="kanji-test-page__next-btn"
-              >
-                {isLastQuestion ? 'Завершить тест' : 'Далее'}
-              </Button>
-            </div>
-          </div>
-        </div>
+        <DailyTaskGrammarQuestion
+          questionNumber={currentIndex + 1}
+          totalQuestions={totalQuestions}
+          title={currentQuestion.title}
+          correctWords={currentQuestion.correctWords}
+          distractors={currentQuestion.distractors}
+          onSlotsChange={setGrammarSlots}
+          onNext={handleNext}
+          nextDisabled={!canGoNext}
+          nextLabel={getNextLabel()}
+          reviewAnswer={grammarAnswer}
+          reviewCorrectWords={currentQuestion.correctWords}
+          isReview={isReview}
+          isLastQuestion={isLastQuestion}
+          onReviewNext={handleNext}
+        />
       );
     }
 
@@ -365,11 +240,7 @@ export default function DailyTaskPage() {
                 disabled={!canGoNext}
                 className="kanji-test-page__next-btn"
               >
-                {isLastQuestion
-                  ? isReview
-                    ? 'К результату'
-                    : 'Завершить тест'
-                  : 'Далее'}
+                {getNextLabel()}
               </Button>
             </div>
           </div>
@@ -379,116 +250,72 @@ export default function DailyTaskPage() {
 
     if (currentQuestion.type === 'reading') {
       return (
-        <div className="kanji-test-page__audio kanji-test-page__reading">
-          <div className="kanji-test-page__choice-layout">
-            <div className="kanji-test-page__audio-left">
-              <div className="kanji-test-page__audio-question">
-                <TestQuestion
-                  questionNumber={currentIndex + 1}
-                  totalQuestions={totalQuestions}
-                  title={currentQuestion.title}
-                />
-              </div>
-              <div className="kanji-test-page__reading-text-wrap">
-                <p className="kanji-test-page__reading-text" lang="ja">
-                  {currentQuestion.text}
-                </p>
-              </div>
-            </div>
-            <div className="kanji-test-page__choice-right">
-              {renderChoices(currentQuestion)}
-              <Button
-                variant="main"
-                size="big"
-                onClick={handleNext}
-                disabled={!canGoNext}
-                className="kanji-test-page__next-btn"
-              >
-                {isLastQuestion
-                  ? isReview
-                    ? 'К результату'
-                    : 'Завершить тест'
-                  : 'Далее'}
-              </Button>
-            </div>
-          </div>
-        </div>
+        <DailyTaskChoiceStep
+          variant="reading"
+          questionNumber={currentIndex + 1}
+          totalQuestions={totalQuestions}
+          title={currentQuestion.title}
+          choices={currentQuestion.choices}
+          readingText={currentQuestion.text}
+          choiceStateForIndex={(index) =>
+            isReview
+              ? getChoiceState(currentQuestion, index)
+              : selectedChoices[currentIndex] === index
+                ? 'selected'
+                : 'default'
+          }
+          onChoiceClick={handleChoiceSelect}
+          onNext={handleNext}
+          nextLabel={getNextLabel()}
+          nextDisabled={!canGoNext}
+          choicesDisabled={isReview}
+        />
       );
     }
 
     if (currentQuestion.type === 'audio') {
       return (
-        <div className="kanji-test-page__audio">
-          <div className="kanji-test-page__choice-layout">
-            <div className="kanji-test-page__audio-left">
-              <div className="kanji-test-page__audio-question">
-                <TestQuestion
-                  questionNumber={currentIndex + 1}
-                  totalQuestions={totalQuestions}
-                  title={currentQuestion.title}
-                />
-              </div>
-              <div className="kanji-test-page__audio-media">
-                <div className="kanji-test-page__audio-media-inner">
-                  <Image
-                    src={KAI_SLEEPY}
-                    alt="Видео к вопросу по аудированию"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 622px"
-                    unoptimized
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="kanji-test-page__choice-right">
-              {renderChoices(currentQuestion)}
-              <Button
-                variant="main"
-                size="big"
-                onClick={handleNext}
-                disabled={!canGoNext}
-                className="kanji-test-page__next-btn"
-              >
-                {isLastQuestion
-                  ? isReview
-                    ? 'К результату'
-                    : 'Завершить тест'
-                  : 'Далее'}
-              </Button>
-            </div>
-          </div>
-        </div>
+        <DailyTaskChoiceStep
+          variant="audio"
+          questionNumber={currentIndex + 1}
+          totalQuestions={totalQuestions}
+          title={currentQuestion.title}
+          choices={currentQuestion.choices}
+          choiceStateForIndex={(index) =>
+            isReview
+              ? getChoiceState(currentQuestion, index)
+              : selectedChoices[currentIndex] === index
+                ? 'selected'
+                : 'default'
+          }
+          onChoiceClick={handleChoiceSelect}
+          onNext={handleNext}
+          nextLabel={getNextLabel()}
+          nextDisabled={!canGoNext}
+          choicesDisabled={isReview}
+        />
       );
     }
 
     return (
-      <div className="kanji-test-page__choice">
-        <div className="kanji-test-page__choice-layout">
-          <div className="kanji-test-page__choice-left">
-            <TestQuestion
-              questionNumber={currentIndex + 1}
-              totalQuestions={totalQuestions}
-              title={currentQuestion.title}
-            />
-          </div>
-          <div className="kanji-test-page__choice-right">
-            {renderChoices(currentQuestion)}
-            <Button
-              variant="main"
-              size="big"
-              onClick={handleNext}
-              disabled={!canGoNext}
-              className="kanji-test-page__next-btn"
-            >
-              {isLastQuestion
-                ? isReview
-                  ? 'К результату'
-                  : 'Завершить тест'
-                : 'Далее'}
-            </Button>
-          </div>
-        </div>
-      </div>
+      <DailyTaskChoiceStep
+        questionNumber={currentIndex + 1}
+        totalQuestions={totalQuestions}
+        title={currentQuestion.title}
+        choices={currentQuestion.choices}
+        choiceStateForIndex={(index) =>
+          isReview
+            ? getChoiceState(currentQuestion, index)
+            : selectedChoices[currentIndex] === index
+              ? 'selected'
+              : 'default'
+        }
+        onChoiceClick={handleChoiceSelect}
+        onNext={handleNext}
+        nextLabel={getNextLabel()}
+        nextDisabled={!canGoNext}
+        choicesDisabled={isReview}
+      />
     );
   };
 

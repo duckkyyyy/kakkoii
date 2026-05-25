@@ -92,7 +92,7 @@ export default function Header() {
                 <Link href="/" className="header-logo">
                   <Image
                     src="/images/logo.png"
-                    alt="kakkii"
+                    alt="KAKKOII"
                     width={200}
                     height={45}
                     priority

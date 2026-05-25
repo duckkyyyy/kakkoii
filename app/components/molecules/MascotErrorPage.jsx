@@ -6,7 +6,7 @@ import styles from './MascotErrorPage.module.css';
 
 const KAI_CONFUSED = '/images/kai/kai-confused.png';
 
-export default function MascotErrorPage({ code, title, description }) {
+export default function MascotErrorPage({ code, title, description, onRetry }) {
   const heading = `${code} — ${title}`;
 
   return (
@@ -21,12 +21,19 @@ export default function MascotErrorPage({ code, title, description }) {
           unoptimized
         />
         <div className={styles.copy}>
-          <Typography variant="28-semi">{heading}</Typography>
-          <Typography variant="20-regular" className={styles.desc}>
+          <Typography variant="28-semi" as="h1">
+            {heading}
+          </Typography>
+          <Typography variant="20-regular" className={styles.desc} as="p">
             {description}
           </Typography>
         </div>
-        <Button href="/" variant="main" size="big">
+        {onRetry ? (
+          <Button variant="main" size="big" onClick={onRetry}>
+            Попробовать снова
+          </Button>
+        ) : null}
+        <Button href="/" variant={onRetry ? 'secondary' : 'main'} size="big">
           Вернуться на главную
         </Button>
       </div>

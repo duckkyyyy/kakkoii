@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import { Checkmark, Cross } from './icons';
+import { hasJapanese } from '../../../lib/hasJapanese';
 
 export default function TestChoiceInput({
   children,
@@ -36,7 +37,12 @@ export default function TestChoiceInput({
       aria-pressed={isSelected}
       aria-invalid={isWrong}
     >
-      <span className="test-choice-input__text">{children}</span>
+      <span
+        className="test-choice-input__text"
+        lang={hasJapanese(children) ? 'ja' : undefined}
+      >
+        {children}
+      </span>
       {showCheckmark && (
         <span className="test-choice-input__icon" aria-hidden>
           <Checkmark

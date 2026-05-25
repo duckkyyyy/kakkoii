@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import Typography from '../atoms/Typography';
+import { hasJapanese } from '../../../lib/hasJapanese';
 
 export default function ArticleBlock({
   type = 'grammar',
@@ -25,15 +26,27 @@ export default function ArticleBlock({
   const renderLexiconParagraph = (item) => {
     if (typeof item === 'string') {
       return (
-        <Typography key={item.slice(0, 30)} variant="24-medium" className="article-block__text">
+        <Typography
+          key={item.slice(0, 30)}
+          variant="24-medium"
+          className="article-block__text"
+          lang={hasJapanese(item) ? 'ja' : undefined}
+        >
           {item}
         </Typography>
       );
     }
     if (item?.bold != null && item?.text != null) {
       return (
-        <Typography key={item.bold} variant="24-medium" className="article-block__text">
-          <span className="article-block__bold">{item.bold}</span>
+        <Typography
+          key={item.bold}
+          variant="24-medium"
+          className="article-block__text"
+          lang={hasJapanese(item.bold) || hasJapanese(item.text) ? 'ja' : undefined}
+        >
+          <span className="article-block__bold" lang={hasJapanese(item.bold) ? 'ja' : undefined}>
+            {item.bold}
+          </span>
           {item.text}
         </Typography>
       );
@@ -54,13 +67,18 @@ export default function ArticleBlock({
         <Typography
           variant={isReading ? '32-medium' : '24-medium'}
           className="article-block__text"
+          lang={hasJapanese(title ?? p1) ? 'ja' : undefined}
         >
           {title ?? p1}
         </Typography>
       ) : isLexicon ? (
         <>
           {title && (
-            <Typography variant="h3" className="article-block__title article-block__title--lexicon">
+            <Typography
+              variant="h3"
+              className="article-block__title article-block__title--lexicon"
+              lang={hasJapanese(title) ? 'ja' : undefined}
+            >
               {title}
             </Typography>
           )}
@@ -70,35 +88,57 @@ export default function ArticleBlock({
         </>
       ) : (
         <>
-          <Typography variant="h4" className="article-block__title">
+          <Typography
+            variant="h4"
+            className="article-block__title"
+            lang={hasJapanese(title) ? 'ja' : undefined}
+          >
             {title ?? 'Title'}
           </Typography>
 
           {isGrammarOrVocab && (
-            <Typography variant="24-medium" className="article-block__text">
+            <Typography
+              variant="24-medium"
+              className="article-block__text"
+              lang={hasJapanese(p1) ? 'ja' : undefined}
+            >
               {p1}
             </Typography>
           )}
 
           {type === 'grammar' && construction && (
             <div className="article-block__construction">
-              <Typography variant="24-medium">{construction}</Typography>
+              <Typography variant="24-medium" lang={hasJapanese(construction) ? 'ja' : undefined}>
+                {construction}
+              </Typography>
             </div>
           )}
 
           {isGrammarOrVocab && (
             <>
-              <Typography variant="24-medium" className="article-block__text">
+              <Typography
+                variant="24-medium"
+                className="article-block__text"
+                lang={hasJapanese(p2) ? 'ja' : undefined}
+              >
                 {p2}
               </Typography>
-              <Typography variant="24-medium" className="article-block__text">
+              <Typography
+                variant="24-medium"
+                className="article-block__text"
+                lang={hasJapanese(p3) ? 'ja' : undefined}
+              >
                 {p3}
               </Typography>
             </>
           )}
 
           {type === 'vocab' && (
-            <Typography variant="24-medium" className="article-block__text">
+            <Typography
+              variant="24-medium"
+              className="article-block__text"
+              lang={hasJapanese(p4) ? 'ja' : undefined}
+            >
               {p4}
             </Typography>
           )}

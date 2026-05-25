@@ -1,23 +1,7 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container, KanjiCard, Typography } from '../components';
-
-const KANJI_LIST = [
-  { kanji: '日', meaning: 'День, солнце', reading: 'nichi, jitsu' },
-  { kanji: '一', meaning: 'Один', reading: 'ichi, hito(tsu)' },
-  { kanji: '国', meaning: 'Страна', reading: 'koku, kuni' },
-  { kanji: '人', meaning: 'Человек', reading: 'jin, hito' },
-  { kanji: '年', meaning: 'Год', reading: 'nen, toshi' },
-  { kanji: '大', meaning: 'Большой, огромный', reading: 'dai, oo(ki)' },
-  { kanji: '十', meaning: 'Десять', reading: 'juu, tou' },
-  { kanji: '二', meaning: 'Два', reading: 'ni, futa(tsu)' },
-  { kanji: '本', meaning: 'Книга, настоящее', reading: 'hon, moto' },
-  { kanji: '中', meaning: 'Внутри, центр', reading: 'chuu, naka' },
-  { kanji: '長', meaning: 'Длинный, лидер', reading: 'chou, naga(i)' },
-  { kanji: '出', meaning: 'Выходить, покидать', reading: 'shutsu, de(ru)' },
-];
+import kanjiIndex from '../../data/kanji/index.json';
 
 export default function KanjiPage() {
   return (
@@ -35,7 +19,7 @@ export default function KanjiPage() {
             />
           </div>
           <div className="kanji-hero__text">
-            <Typography variant="28-semi" className="kanji-hero__title">
+            <Typography variant="28-semi" className="kanji-hero__title" as="p">
               Покорите кандзи без лишней сложности. Наша система позволяет глубоко изучить каждый иероглиф и сразу применить знания на практике.
             </Typography>
             <ol className="kanji-hero__list typo-24-medium">
@@ -47,14 +31,14 @@ export default function KanjiPage() {
         </section>
 
         <div className="kanji-page__grid">
-          {KANJI_LIST.map((item) => (
+          {kanjiIndex.map((item) => (
             <Link
-              key={item.kanji}
-              href={`/kanji/${encodeURIComponent(item.kanji)}`}
+              key={item.character}
+              href={`/kanji/${encodeURIComponent(item.character)}`}
               className="kanji-page__card-link"
             >
               <KanjiCard
-                kanji={item.kanji}
+                kanji={item.character}
                 meaning={item.meaning}
                 reading={item.reading}
                 buttonText="Учить"

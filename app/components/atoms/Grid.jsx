@@ -1,11 +1,17 @@
-export default function Grid({ 
-  children, 
-  cols = 12, 
+export default function Grid({
+  children,
+  cols = 12,
   gap = '20px',
-  className = '' 
+  className = '',
 }) {
   return (
-    <div className={`grid-12 ${className}`.trim()}>
+    <div
+      className={`grid-12 ${className}`.trim()}
+      style={{
+        gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+        gap,
+      }}
+    >
       {children}
     </div>
   );

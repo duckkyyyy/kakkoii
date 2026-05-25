@@ -138,12 +138,12 @@ export default function VocabCard({
       <div className="vocab-card__content">
         <div className="vocab-card__japanese">
           {reading && (
-            <Typography variant="16-regular" className="vocab-card__reading">
+            <Typography variant="16-regular" className="vocab-card__reading" lang="ja">
               {reading}
             </Typography>
           )}
           {kanji && (
-            <Typography variant="32-medium" className="vocab-card__kanji">
+            <Typography variant="32-medium" className="vocab-card__kanji" lang="ja">
               {kanji}
             </Typography>
           )}
