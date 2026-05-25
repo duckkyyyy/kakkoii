@@ -49,6 +49,12 @@
   min-width: 0;
 }
 
+@media (max-width: 1199px) {
+  .sidebar {
+    order: -1;
+  }
+}
+
 @media (min-width: 1200px) {
   .sidebar {
     position: sticky;
@@ -268,10 +274,54 @@
   min-width: 0;
 }
 
+@media (max-width: 1200px) {
+  .testInner {
+    flex-direction: column;
+  }
+
+  .testChoiceLayout {
+    flex-direction: column;
+  }
+
+  .testChoiceLeft,
+  .testChoiceRight,
+  .testChoices {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .testChoiceLeft > * {
+    flex: 0 0 auto;
+    min-height: auto;
+  }
+
+  .testChoiceLeft :global(.article-test) {
+    min-height: 360px;
+  }
+
+  .testResultWrap {
+    flex-direction: column;
+  }
+
+  .testResultLeft,
+  .testResultRight {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .testResultLeft {
     max-width: 100%;
     min-height: 280px;
+  }
+
+  .testChoiceLeft :global(.article-test) {
+    min-height: 320px;
   }
 
   .testResultTitle {

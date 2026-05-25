@@ -66,7 +66,7 @@ export default function CategoryFilter({
   const handleCategorySelect = (value, isDisabled) => {
     if (isDisabled) return;
     onCategoryClick?.(value);
-    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches) {
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 1440px)').matches) {
       setMobileCategoriesOpen(false);
     }
   };
