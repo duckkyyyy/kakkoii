@@ -10,6 +10,25 @@ function getResultTier(score, total) {
   return 'fail';
 }
 
+const DEFAULT_RESULT_MESSAGES = {
+  perfect: {
+    main: 'やばい! Все ответы верны — отличная работа!',
+    sub: 'Ты уверенно усвоил материал статьи. Так держать!',
+  },
+  partial: {
+    main: 'Хороший результат! Пару вопросов стоит повторить.',
+    sub: 'Перечитай статью и пройди тест ещё раз — будет ещё лучше.',
+  },
+  fail: {
+    main: 'Не сдавайся! Перечитай статью и попробуй снова. 頑張って!',
+    sub: 'Каждый повтор приближает к цели — слова запомнятся в контексте.',
+  },
+};
+
+function textLang(text) {
+  return /[\u3040-\u30FF\u4E00-\u9FFF]/.test(text ?? '') ? 'ja' : undefined;
+}
+
 export default function ArticleTestResult({
   article,
   resultScore,
@@ -18,7 +37,8 @@ export default function ArticleTestResult({
   onViewAnswers,
 }) {
   const tier = getResultTier(resultScore, resultTotal);
-  const messages = article.test?.resultMessages?.[tier];
+  const messages =
+    article.test?.resultMessages?.[tier] ?? DEFAULT_RESULT_MESSAGES[tier];
 
   return (
     <div className={styles.testResultWrap}>
@@ -41,13 +61,13 @@ export default function ArticleTestResult({
       </div>
       <div className={styles.testResultRight}>
         <div className={styles.testResultCard}>
-          {messages?.main && (
-            <p className={styles.testResultMain} lang="ja">
+          {messages.main && (
+            <p className={styles.testResultMain} lang={textLang(messages.main)}>
               {messages.main}
             </p>
           )}
-          {messages?.sub && (
-            <p className={styles.testResultSub} lang="ja">
+          {messages.sub && (
+            <p className={styles.testResultSub} lang={textLang(messages.sub)}>
               {messages.sub}
             </p>
           )}

@@ -62,7 +62,7 @@ export default function ArticleCard({
           </Typography>
         )}
         {description && (
-          <Typography variant="16-regular" className="article-card__description">
+          <Typography variant="16-medium" className="article-card__description">
             {description}
           </Typography>
         )}
