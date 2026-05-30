@@ -9,7 +9,7 @@ const COLS_MOBILE = 1;
 const INITIAL_VISIBLE = 4;
 
 const FIRST_TAGS = [...new Set(ARTICLES.map((a) => a.tags[0]).filter(Boolean))].sort();
-const CATEGORIES = ['Все', ...FIRST_TAGS, 'Аудирование'];
+const CATEGORIES = ['Все', ...FIRST_TAGS];
 const SECOND_TAGS = [...new Set(ARTICLES.map((a) => a.tags[1]).filter(Boolean))].sort();
 const DISABLED_CATEGORIES = CATEGORIES.filter((c) => c !== 'Все' && !FIRST_TAGS.includes(c));
 

@@ -82,11 +82,11 @@
       "description": "Реальное меню раменной — разобрали каждую строчку."
     },
     {
-      "slug": "ramen",
-      "image": "/images/covers/ramen.jpg",
-      "tags": ["Чтение", "Еда"],
-      "title": "Прочти и пойми отзыв о рамене как японец",
-      "description": "Настоящий отзыв из блога — лексика про еду и вкус."
+      "slug": "blogger-weekend",
+      "image": "/images/covers/blogger-weekend.png",
+      "tags": ["Чтение", "Соцсети"],
+      "title": "Пост японского блогера: как он провёл выходные",
+      "description": "Реальные посты японцев — разговорный японский из соцсетей."
     },
     {
       "slug": "magic-battle-s3e1",
